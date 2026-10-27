@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "kind": "model",
+  "id": "fireredasr2-llm",
+  "name": "FireRedASR2-LLM",
+  "description": "语音识别模型，使用官方完整目录与语音推理组件。",
+  "family": "FireRedASR2",
+  "architecture": "fireredasr2",
+  "format": "pytorch+safetensors",
+  "quantization": "original",
+  "source": {
+    "repo": "FireRedTeam/FireRedASR2-LLM",
+    "revision": "2c5e0f415b9afb8f67cb8b00ea4c54959f70e824"
+  },
+  "downloads": {
+    "global": [
+      {
+        "label": "Hugging Face · 固定版本",
+        "url": "https://huggingface.co/FireRedTeam/FireRedASR2-LLM/tree/2c5e0f415b9afb8f67cb8b00ea4c54959f70e824",
+        "revision": "2c5e0f415b9afb8f67cb8b00ea4c54959f70e824",
+        "verification": "upstream",
+        "manifestUrl": null,
+        "manifestSha256": null
+      }
+    ],
+    "cn": []
+  },
+  "requirements": {
+    "systemRamGiB": null,
+    "gpuMemoryGiB": null,
+    "diskBytes": 18870512882,
+    "notes": "文件体积不等于运行内存；下载和解压需另留磁盘余量。内存需求及上下文对应关系等待可复现实测，不据此自动配置运行参数。"
+  },
+  "hardware": [
+    {
+      "id": "nvidia-rtx-spark",
+      "name": "NVIDIA RTX Spark / Windows UMA",
+      "status": "unverified",
+      "reportIds": []
+    }
+  ]
+}

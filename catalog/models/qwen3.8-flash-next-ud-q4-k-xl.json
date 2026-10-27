@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "kind": "model",
+  "id": "qwen3.8-flash-next-ud-q4-k-xl",
+  "name": "Qwen3.8-Flash-Next · Unsloth UD-Q4_K_XL",
+  "description": "UD-Q4_K_XL GGUF 变体；硬件适配需以相同版本的实测为准。",
+  "family": "Qwen3.8",
+  "architecture": "qwen3.8",
+  "format": "gguf",
+  "quantization": "UD-Q4_K_XL",
+  "source": {
+    "repo": "unsloth/Qwen3.8-Flash-Next-GGUF",
+    "revision": "766911a6b7369840a91dbcd95f9f997acaab6cd6"
+  },
+  "downloads": {
+    "global": [
+      {
+        "label": "Hugging Face · 固定版本",
+        "url": "https://huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF/tree/766911a6b7369840a91dbcd95f9f997acaab6cd6",
+        "revision": "766911a6b7369840a91dbcd95f9f997acaab6cd6",
+        "verification": "upstream",
+        "manifestUrl": null,
+        "manifestSha256": null
+      }
+    ],
+    "cn": []
+  },
+  "requirements": {
+    "systemRamGiB": null,
+    "gpuMemoryGiB": null,
+    "diskBytes": 111334654784,
+    "notes": "文件体积不等于运行内存；下载和解压需另留磁盘余量。内存需求及上下文对应关系等待可复现实测，不据此自动配置运行参数。"
+  },
+  "hardware": [
+    {
+      "id": "nvidia-rtx-spark",
+      "name": "NVIDIA RTX Spark / Windows UMA",
+      "status": "unverified",
+      "reportIds": []
+    }
+  ]
+}

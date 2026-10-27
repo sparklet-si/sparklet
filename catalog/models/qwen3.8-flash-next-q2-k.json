@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "kind": "model",
+  "id": "qwen3.8-flash-next-q2-k",
+  "name": "Qwen3.8-Flash-Next · Bartowski Q2_K",
+  "description": "Q2_K GGUF 变体；需支持对应架构的 GGUF 服务构建。",
+  "family": "Qwen3.8",
+  "architecture": "qwen3.8",
+  "format": "gguf",
+  "quantization": "Q2_K",
+  "source": {
+    "repo": "bartowski/Qwen3.8-Flash-Next-GGUF",
+    "revision": "db3a185731e162be9ffa4d52d20d7509939e60e8"
+  },
+  "downloads": {
+    "global": [
+      {
+        "label": "Hugging Face · 固定版本",
+        "url": "https://huggingface.co/bartowski/Qwen3.8-Flash-Next-GGUF/tree/db3a185731e162be9ffa4d52d20d7509939e60e8",
+        "revision": "db3a185731e162be9ffa4d52d20d7509939e60e8",
+        "verification": "upstream",
+        "manifestUrl": null,
+        "manifestSha256": null
+      }
+    ],
+    "cn": []
+  },
+  "requirements": {
+    "systemRamGiB": null,
+    "gpuMemoryGiB": null,
+    "diskBytes": 80926779072,
+    "notes": "文件体积不等于运行内存；下载和解压需另留磁盘余量。内存需求及上下文对应关系等待可复现实测，不据此自动配置运行参数。"
+  },
+  "hardware": [
+    {
+      "id": "nvidia-rtx-spark",
+      "name": "NVIDIA RTX Spark / Windows UMA",
+      "status": "unverified",
+      "reportIds": []
+    }
+  ]
+}
