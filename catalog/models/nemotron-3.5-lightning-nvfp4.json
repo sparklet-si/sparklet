@@ -1,0 +1,298 @@
+{
+  "schemaVersion": 1,
+  "kind": "model",
+  "id": "nemotron-3.5-lightning-nvfp4",
+  "name": "Nemotron 3.5 Lightning 30B-A3B · NVFP4",
+  "description": "英语、编程与代理的低延迟候选；NVIDIA 提供单台 DGX Spark 配方。需外部 vLLM。",
+  "family": "Nemotron 3.5",
+  "architecture": "nemotron_h",
+  "format": "safetensors",
+  "quantization": "NVFP4",
+  "source": {
+    "repo": "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-NVFP4",
+    "revision": "bee7596271d1495f6992ae224aefde4410e816b8"
+  },
+  "downloads": {
+    "global": [
+      {
+        "label": "Hugging Face · 固定版本",
+        "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-NVFP4/tree/bee7596271d1495f6992ae224aefde4410e816b8",
+        "revision": "bee7596271d1495f6992ae224aefde4410e816b8",
+        "verification": "upstream",
+        "manifestUrl": null,
+        "manifestSha256": null
+      }
+    ],
+    "cn": []
+  },
+  "requirements": {
+    "systemRamGiB": null,
+    "gpuMemoryGiB": null,
+    "diskBytes": 21583322072,
+    "notes": "这是独立目标模型，名称含 DSpark / DFlash 的仓库是草稿模型，不能单独替代它。本条不包含草稿权重；GB10 的官方配方指定 Marlin W4A16 路径，不能从 Blackwell 名称推断所有 FP4 内核都可用。先验证 8K、并发 1。 以下为单机 128 GiB Linux GB10 的选型建议，未完成本版本的 Sparklet 实机验收。文件体积不是运行内存；需另留系统、加载临时空间、KV cache 和运行环境磁盘空间。 当前 Sparklet 未接入此架构或量化，需使用所述外部引擎。"
+  },
+  "hardware": [
+    {
+      "id": "nvidia-dgx-spark",
+      "name": "NVIDIA DGX Spark / GB10 / Linux / 128 GiB",
+      "status": "unverified",
+      "reportIds": []
+    }
+  ],
+  "curation": {
+    "originCountry": "US",
+    "rank": 10,
+    "reviewedAt": "2026-10-27",
+    "downloads30d": 1064946,
+    "evidence": [
+      "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-NVFP4/blob/bee7596271d1495f6992ae224aefde4410e816b8/README.md",
+      "https://github.com/eugr/spark-vllm-docker"
+    ],
+    "files": [
+      {
+        "path": "LICENSE",
+        "bytes": 2693
+      },
+      {
+        "path": "chat_template.jinja",
+        "bytes": 9867
+      },
+      {
+        "path": "config.json",
+        "bytes": 1337760
+      },
+      {
+        "path": "generation_config.json",
+        "bytes": 209
+      },
+      {
+        "path": "hf_quant_config.json",
+        "bytes": 928085
+      },
+      {
+        "path": "model-00001-of-00052.safetensors",
+        "bytes": 743427168
+      },
+      {
+        "path": "model-00002-of-00052.safetensors",
+        "bytes": 731109880
+      },
+      {
+        "path": "model-00003-of-00052.safetensors",
+        "bytes": 38783920
+      },
+      {
+        "path": "model-00004-of-00052.safetensors",
+        "bytes": 731109880
+      },
+      {
+        "path": "model-00005-of-00052.safetensors",
+        "bytes": 38783920
+      },
+      {
+        "path": "model-00006-of-00052.safetensors",
+        "bytes": 46798848
+      },
+      {
+        "path": "model-00007-of-00052.safetensors",
+        "bytes": 731109880
+      },
+      {
+        "path": "model-00008-of-00052.safetensors",
+        "bytes": 38783920
+      },
+      {
+        "path": "model-00009-of-00052.safetensors",
+        "bytes": 731109880
+      },
+      {
+        "path": "model-00010-of-00052.safetensors",
+        "bytes": 38783920
+      },
+      {
+        "path": "model-00011-of-00052.safetensors",
+        "bytes": 731110656
+      },
+      {
+        "path": "model-00012-of-00052.safetensors",
+        "bytes": 38783936
+      },
+      {
+        "path": "model-00013-of-00052.safetensors",
+        "bytes": 46798856
+      },
+      {
+        "path": "model-00014-of-00052.safetensors",
+        "bytes": 731110656
+      },
+      {
+        "path": "model-00015-of-00052.safetensors",
+        "bytes": 38783936
+      },
+      {
+        "path": "model-00016-of-00052.safetensors",
+        "bytes": 731110656
+      },
+      {
+        "path": "model-00017-of-00052.safetensors",
+        "bytes": 38783936
+      },
+      {
+        "path": "model-00018-of-00052.safetensors",
+        "bytes": 731110656
+      },
+      {
+        "path": "model-00019-of-00052.safetensors",
+        "bytes": 38783936
+      },
+      {
+        "path": "model-00020-of-00052.safetensors",
+        "bytes": 46798856
+      },
+      {
+        "path": "model-00021-of-00052.safetensors",
+        "bytes": 731110656
+      },
+      {
+        "path": "model-00022-of-00052.safetensors",
+        "bytes": 38783936
+      },
+      {
+        "path": "model-00023-of-00052.safetensors",
+        "bytes": 731110656
+      },
+      {
+        "path": "model-00024-of-00052.safetensors",
+        "bytes": 38783936
+      },
+      {
+        "path": "model-00025-of-00052.safetensors",
+        "bytes": 731110656
+      },
+      {
+        "path": "model-00026-of-00052.safetensors",
+        "bytes": 38783936
+      },
+      {
+        "path": "model-00027-of-00052.safetensors",
+        "bytes": 46798856
+      },
+      {
+        "path": "model-00028-of-00052.safetensors",
+        "bytes": 731110656
+      },
+      {
+        "path": "model-00029-of-00052.safetensors",
+        "bytes": 38783936
+      },
+      {
+        "path": "model-00030-of-00052.safetensors",
+        "bytes": 731110656
+      },
+      {
+        "path": "model-00031-of-00052.safetensors",
+        "bytes": 38783936
+      },
+      {
+        "path": "model-00032-of-00052.safetensors",
+        "bytes": 731110656
+      },
+      {
+        "path": "model-00033-of-00052.safetensors",
+        "bytes": 38783936
+      },
+      {
+        "path": "model-00034-of-00052.safetensors",
+        "bytes": 46798856
+      },
+      {
+        "path": "model-00035-of-00052.safetensors",
+        "bytes": 731110656
+      },
+      {
+        "path": "model-00036-of-00052.safetensors",
+        "bytes": 38783936
+      },
+      {
+        "path": "model-00037-of-00052.safetensors",
+        "bytes": 731110656
+      },
+      {
+        "path": "model-00038-of-00052.safetensors",
+        "bytes": 38783936
+      },
+      {
+        "path": "model-00039-of-00052.safetensors",
+        "bytes": 731110656
+      },
+      {
+        "path": "model-00040-of-00052.safetensors",
+        "bytes": 38783936
+      },
+      {
+        "path": "model-00041-of-00052.safetensors",
+        "bytes": 731110656
+      },
+      {
+        "path": "model-00042-of-00052.safetensors",
+        "bytes": 38783936
+      },
+      {
+        "path": "model-00043-of-00052.safetensors",
+        "bytes": 46798856
+      },
+      {
+        "path": "model-00044-of-00052.safetensors",
+        "bytes": 731110656
+      },
+      {
+        "path": "model-00045-of-00052.safetensors",
+        "bytes": 38783936
+      },
+      {
+        "path": "model-00046-of-00052.safetensors",
+        "bytes": 731110656
+      },
+      {
+        "path": "model-00047-of-00052.safetensors",
+        "bytes": 38783936
+      },
+      {
+        "path": "model-00048-of-00052.safetensors",
+        "bytes": 731110656
+      },
+      {
+        "path": "model-00049-of-00052.safetensors",
+        "bytes": 38783936
+      },
+      {
+        "path": "model-00050-of-00052.safetensors",
+        "bytes": 731110656
+      },
+      {
+        "path": "model-00051-of-00052.safetensors",
+        "bytes": 38783936
+      },
+      {
+        "path": "model-00052-of-00052.safetensors",
+        "bytes": 3599984132
+      },
+      {
+        "path": "model.safetensors.index.json",
+        "bytes": 1905918
+      },
+      {
+        "path": "special_tokens_map.json",
+        "bytes": 563
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 17077484
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 177209
+      }
+    ]
+  }
+}

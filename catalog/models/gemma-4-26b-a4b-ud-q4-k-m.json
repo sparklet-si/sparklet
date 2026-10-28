@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "kind": "model",
+  "id": "gemma-4-26b-a4b-ud-q4-k-m",
+  "name": "Gemma 4 26B-A4B · UD-Q4_K_M",
+  "description": "多语言、视觉与通用任务的稀疏模型备选。需外部支持 Gemma 4 的 llama.cpp。",
+  "family": "Gemma 4",
+  "architecture": "gemma4",
+  "format": "gguf",
+  "quantization": "UD-Q4_K_M",
+  "source": {
+    "repo": "unsloth/gemma-4-26B-A4B-it-GGUF",
+    "revision": "c099eb48e663fd284577b04978a94ffccb261841"
+  },
+  "downloads": {
+    "global": [
+      {
+        "label": "Hugging Face · 固定版本",
+        "url": "https://huggingface.co/unsloth/gemma-4-26B-A4B-it-GGUF/tree/c099eb48e663fd284577b04978a94ffccb261841",
+        "revision": "c099eb48e663fd284577b04978a94ffccb261841",
+        "verification": "upstream",
+        "manifestUrl": null,
+        "manifestSha256": null
+      }
+    ],
+    "cn": []
+  },
+  "requirements": {
+    "systemRamGiB": null,
+    "gpuMemoryGiB": null,
+    "diskBytes": 18140600512,
+    "notes": "选择 gemma-4-26B-A4B-it-UD-Q4_K_M.gguf，视觉用途还需同版本 mmproj-F16.gguf，本条大小包含该投影文件。先用 8K、并发 1 验证；其视觉路径未接入 Sparklet。 以下为单机 128 GiB Linux GB10 的选型建议，未完成本版本的 Sparklet 实机验收。文件体积不是运行内存；需另留系统、加载临时空间、KV cache 和运行环境磁盘空间。 当前 Sparklet 未接入此架构或量化，需使用所述外部引擎。"
+  },
+  "hardware": [
+    {
+      "id": "nvidia-dgx-spark",
+      "name": "NVIDIA DGX Spark / GB10 / Linux / 128 GiB",
+      "status": "unverified",
+      "reportIds": []
+    }
+  ],
+  "curation": {
+    "originCountry": "US",
+    "rank": 60,
+    "reviewedAt": "2026-10-27",
+    "downloads30d": 1120578,
+    "evidence": [
+      "https://huggingface.co/unsloth/gemma-4-26B-A4B-it-GGUF/blob/c099eb48e663fd284577b04978a94ffccb261841/README.md",
+      "https://huggingface.co/google/gemma-4-26B-A4B-it"
+    ],
+    "files": [
+      {
+        "path": "gemma-4-26B-A4B-it-UD-Q4_K_M.gguf",
+        "bytes": 16947541728
+      },
+      {
+        "path": "mmproj-F16.gguf",
+        "bytes": 1193058784
+      }
+    ]
+  }
+}

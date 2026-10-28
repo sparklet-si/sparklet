@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "kind": "model",
+  "id": "glm-4.7-flash-q4-k-m",
+  "name": "GLM-4.7-Flash · Q4_K_M",
+  "description": "中文推理、编程与工具调用的紧凑 MoE 备选，社区仍有活跃下载与 GB10 运行记录。需外部 llama.cpp。",
+  "family": "GLM",
+  "architecture": "glm4_moe_lite",
+  "format": "gguf",
+  "quantization": "Q4_K_M",
+  "source": {
+    "repo": "unsloth/GLM-4.7-Flash-GGUF",
+    "revision": "0d32489ecb9db6d2a4fc93bd27ef01519f95474d"
+  },
+  "downloads": {
+    "global": [
+      {
+        "label": "Hugging Face · 固定版本",
+        "url": "https://huggingface.co/unsloth/GLM-4.7-Flash-GGUF/tree/0d32489ecb9db6d2a4fc93bd27ef01519f95474d",
+        "revision": "0d32489ecb9db6d2a4fc93bd27ef01519f95474d",
+        "verification": "upstream",
+        "manifestUrl": null,
+        "manifestSha256": null
+      }
+    ],
+    "cn": []
+  },
+  "requirements": {
+    "systemRamGiB": null,
+    "gpuMemoryGiB": null,
+    "diskBytes": 18312339808,
+    "notes": "选择 GLM-4.7-Flash-Q4_K_M.gguf。官方 llama.cpp 仓库有此模型家族的 DGX Spark 基准，但量化发布者和版本可能不同，不能把其中 TPS 复制为本条实测。先验证 8K、并发 1。 以下为单机 128 GiB Linux GB10 的选型建议，未完成本版本的 Sparklet 实机验收。文件体积不是运行内存；需另留系统、加载临时空间、KV cache 和运行环境磁盘空间。 当前 Sparklet 未接入此架构或量化，需使用所述外部引擎。"
+  },
+  "hardware": [
+    {
+      "id": "nvidia-dgx-spark",
+      "name": "NVIDIA DGX Spark / GB10 / Linux / 128 GiB",
+      "status": "unverified",
+      "reportIds": []
+    }
+  ],
+  "curation": {
+    "originCountry": "CN",
+    "rank": 40,
+    "reviewedAt": "2026-10-27",
+    "downloads30d": 240946,
+    "evidence": [
+      "https://huggingface.co/unsloth/GLM-4.7-Flash-GGUF/blob/0d32489ecb9db6d2a4fc93bd27ef01519f95474d/README.md",
+      "https://huggingface.co/zai-org/GLM-4.7-Flash",
+      "https://github.com/ggml-org/llama.cpp/blob/master/benches/dgx-spark/dgx-spark.md"
+    ],
+    "files": [
+      {
+        "path": "GLM-4.7-Flash-Q4_K_M.gguf",
+        "bytes": 18312339808
+      }
+    ]
+  }
+}

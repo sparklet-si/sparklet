@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "kind": "model",
+  "id": "qwen3.8-27b-nvfp4",
+  "name": "Qwen3.8 27B · NVIDIA NVFP4",
+  "description": "通用中文、编程与图像理解优先候选；27B 稠密模型。需外部 vLLM / SGLang。",
+  "family": "Qwen3.8",
+  "architecture": "qwen3_5",
+  "format": "safetensors",
+  "quantization": "NVFP4",
+  "source": {
+    "repo": "nvidia/Qwen3.8-27B-NVFP4",
+    "revision": "482ca0f3832238542f8f5295dde86b5f22711d80"
+  },
+  "downloads": {
+    "global": [
+      {
+        "label": "Hugging Face · 固定版本",
+        "url": "https://huggingface.co/nvidia/Qwen3.8-27B-NVFP4/tree/482ca0f3832238542f8f5295dde86b5f22711d80",
+        "revision": "482ca0f3832238542f8f5295dde86b5f22711d80",
+        "verification": "upstream",
+        "manifestUrl": null,
+        "manifestSha256": null
+      }
+    ],
+    "cn": []
+  },
+  "requirements": {
+    "systemRamGiB": null,
+    "gpuMemoryGiB": null,
+    "diskBytes": 21944962547,
+    "notes": "优先选择 NVFP4 以控制单流带宽开销；社区对比显示 FP8 不必然更快。先以 8K 上下文、并发 1 验证，再逐步增加；投机解码须另配草稿模型，不计入本条文件大小。 以下为单机 128 GiB Linux GB10 的选型建议，未完成本版本的 Sparklet 实机验收。文件体积不是运行内存；需另留系统、加载临时空间、KV cache 和运行环境磁盘空间。 当前 Sparklet 未接入此架构或量化，需使用所述外部引擎。"
+  },
+  "hardware": [
+    {
+      "id": "nvidia-dgx-spark",
+      "name": "NVIDIA DGX Spark / GB10 / Linux / 128 GiB",
+      "status": "unverified",
+      "reportIds": []
+    }
+  ],
+  "curation": {
+    "originCountry": "CN",
+    "rank": 10,
+    "reviewedAt": "2026-10-27",
+    "downloads30d": 369240,
+    "evidence": [
+      "https://huggingface.co/nvidia/Qwen3.8-27B-NVFP4/blob/482ca0f3832238542f8f5295dde86b5f22711d80/README.md",
+      "https://github.com/HAOyezi/qwen38-27b-dgx-spark-benchmarks",
+      "https://github.com/eugr/spark-vllm-docker"
+    ],
+    "files": [
+      {
+        "path": "LICENSE",
+        "bytes": 11544
+      },
+      {
+        "path": "chat_template.jinja",
+        "bytes": 8952
+      },
+      {
+        "path": "config.json",
+        "bytes": 87506
+      },
+      {
+        "path": "generation_config.json",
+        "bytes": 214
+      },
+      {
+        "path": "hf_quant_config.json",
+        "bytes": 53760
+      },
+      {
+        "path": "merges.txt",
+        "bytes": 3353259
+      },
+      {
+        "path": "model-00001-of-00003.safetensors",
+        "bytes": 9965652544
+      },
+      {
+        "path": "model-00002-of-00003.safetensors",
+        "bytes": 9985757064
+      },
+      {
+        "path": "model-00003-of-00003.safetensors",
+        "bytes": 1970287672
+      },
+      {
+        "path": "model.safetensors.index.json",
+        "bytes": 214866
+      },
+      {
+        "path": "preprocessor_config.json",
+        "bytes": 390
+      },
+      {
+        "path": "processor_config.json",
+        "bytes": 1191
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 12809320
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 1121
+      },
+      {
+        "path": "video_preprocessor_config.json",
+        "bytes": 385
+      },
+      {
+        "path": "vocab.json",
+        "bytes": 6722759
+      }
+    ]
+  }
+}

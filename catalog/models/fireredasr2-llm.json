@@ -3,7 +3,7 @@
   "kind": "model",
   "id": "fireredasr2-llm",
   "name": "FireRedASR2-LLM",
-  "description": "语音识别模型，使用官方完整目录与语音推理组件。",
+  "description": "保留的语音识别专项模型，Sparklet 已有对应组件；使用官方完整目录。",
   "family": "FireRedASR2",
   "architecture": "fireredasr2",
   "format": "pytorch+safetensors",
@@ -29,14 +29,91 @@
     "systemRamGiB": null,
     "gpuMemoryGiB": null,
     "diskBytes": 18870512882,
-    "notes": "文件体积不等于运行内存；下载和解压需另留磁盘余量。内存需求及上下文对应关系等待可复现实测，不据此自动配置运行参数。"
+    "notes": "该模型是专项转写工具，不能与通用聊天按单一分数比较。音频时长与批量决定运行需求。 以下为单机 128 GiB Linux GB10 的选型建议，未完成本版本的 Sparklet 实机验收。文件体积不是运行内存；需另留系统、加载临时空间、KV cache 和运行环境磁盘空间。"
   },
   "hardware": [
+    {
+      "id": "nvidia-dgx-spark",
+      "name": "NVIDIA DGX Spark / GB10 / Linux / 128 GiB",
+      "status": "unverified",
+      "reportIds": []
+    },
     {
       "id": "nvidia-rtx-spark",
       "name": "NVIDIA RTX Spark / Windows UMA",
       "status": "unverified",
       "reportIds": []
     }
-  ]
+  ],
+  "curation": {
+    "originCountry": "CN",
+    "rank": 160,
+    "reviewedAt": "2026-10-27",
+    "downloads30d": 345,
+    "evidence": [
+      "https://huggingface.co/FireRedTeam/FireRedASR2-LLM/blob/2c5e0f415b9afb8f67cb8b00ea4c54959f70e824/README.md"
+    ],
+    "files": [
+      {
+        "path": "Qwen2-7B-Instruct/LICENSE",
+        "bytes": 11344
+      },
+      {
+        "path": "Qwen2-7B-Instruct/config.json",
+        "bytes": 663
+      },
+      {
+        "path": "Qwen2-7B-Instruct/generation_config.json",
+        "bytes": 243
+      },
+      {
+        "path": "Qwen2-7B-Instruct/merges.txt",
+        "bytes": 1671839
+      },
+      {
+        "path": "Qwen2-7B-Instruct/model-00001-of-00004.safetensors",
+        "bytes": 3945426872
+      },
+      {
+        "path": "Qwen2-7B-Instruct/model-00002-of-00004.safetensors",
+        "bytes": 3864726352
+      },
+      {
+        "path": "Qwen2-7B-Instruct/model-00003-of-00004.safetensors",
+        "bytes": 3864726408
+      },
+      {
+        "path": "Qwen2-7B-Instruct/model-00004-of-00004.safetensors",
+        "bytes": 3556392240
+      },
+      {
+        "path": "Qwen2-7B-Instruct/model.safetensors.index.json",
+        "bytes": 27752
+      },
+      {
+        "path": "Qwen2-7B-Instruct/tokenizer.json",
+        "bytes": 7028015
+      },
+      {
+        "path": "Qwen2-7B-Instruct/tokenizer_config.json",
+        "bytes": 1288
+      },
+      {
+        "path": "Qwen2-7B-Instruct/vocab.json",
+        "bytes": 2776833
+      },
+      {
+        "path": "asr_encoder.pth.tar",
+        "bytes": 1472
+      },
+      {
+        "path": "cmvn.ark",
+        "bytes": 1311
+      },
+      {
+        "path": "model.pth.tar",
+        "bytes": 3627720250
+      }
+    ]
+  }
 }

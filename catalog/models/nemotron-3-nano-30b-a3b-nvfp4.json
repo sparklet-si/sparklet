@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "kind": "model",
+  "id": "nemotron-3-nano-30b-a3b-nvfp4",
+  "name": "Nemotron 3 Nano 30B-A3B · NVFP4",
+  "description": "仍有活跃使用的英语/编程轻量 MoE 基线；新部署优先比较 Lightning 3.5。需外部 vLLM。",
+  "family": "Nemotron 3",
+  "architecture": "nemotron_h",
+  "format": "safetensors",
+  "quantization": "NVFP4",
+  "source": {
+    "repo": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-NVFP4",
+    "revision": "6efb4a2a1c1fa277ce7b3df7a1416255011b1c99"
+  },
+  "downloads": {
+    "global": [
+      {
+        "label": "Hugging Face · 固定版本",
+        "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-NVFP4/tree/6efb4a2a1c1fa277ce7b3df7a1416255011b1c99",
+        "revision": "6efb4a2a1c1fa277ce7b3df7a1416255011b1c99",
+        "verification": "upstream",
+        "manifestUrl": null,
+        "manifestSha256": null
+      }
+    ],
+    "cn": []
+  },
+  "requirements": {
+    "systemRamGiB": null,
+    "gpuMemoryGiB": null,
+    "diskBytes": 19362673398,
+    "notes": "保留此条供已有 Nano 工作流与新模型对照；使用与 GB10 匹配的 Mamba、MoE 和 NVFP4 内核。先验证 8K、并发 1，不把其他显卡或 BF16 模型的结果记到本版本。 以下为单机 128 GiB Linux GB10 的选型建议，未完成本版本的 Sparklet 实机验收。文件体积不是运行内存；需另留系统、加载临时空间、KV cache 和运行环境磁盘空间。 当前 Sparklet 未接入此架构或量化，需使用所述外部引擎。"
+  },
+  "hardware": [
+    {
+      "id": "nvidia-dgx-spark",
+      "name": "NVIDIA DGX Spark / GB10 / Linux / 128 GiB",
+      "status": "unverified",
+      "reportIds": []
+    }
+  ],
+  "curation": {
+    "originCountry": "US",
+    "rank": 80,
+    "reviewedAt": "2026-10-27",
+    "downloads30d": 1335074,
+    "evidence": [
+      "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-NVFP4/blob/6efb4a2a1c1fa277ce7b3df7a1416255011b1c99/README.md",
+      "https://github.com/NVIDIA/dgx-spark-playbooks",
+      "https://github.com/eugr/spark-vllm-docker"
+    ],
+    "files": [
+      {
+        "path": "chat_template.jinja",
+        "bytes": 10504
+      },
+      {
+        "path": "config.json",
+        "bytes": 1817
+      },
+      {
+        "path": "configuration_nemotron_h.py",
+        "bytes": 12893
+      },
+      {
+        "path": "generation_config.json",
+        "bytes": 197
+      },
+      {
+        "path": "hf_quant_config.json",
+        "bytes": 3050
+      },
+      {
+        "path": "model-00001-of-00005.safetensors",
+        "bytes": 3998838864
+      },
+      {
+        "path": "model-00002-of-00005.safetensors",
+        "bytes": 4000414120
+      },
+      {
+        "path": "model-00003-of-00005.safetensors",
+        "bytes": 3999641680
+      },
+      {
+        "path": "model-00004-of-00005.safetensors",
+        "bytes": 4000413336
+      },
+      {
+        "path": "model-00005-of-00005.safetensors",
+        "bytes": 3343488520
+      },
+      {
+        "path": "model.safetensors.index.json",
+        "bytes": 2497886
+      },
+      {
+        "path": "modeling_nemotron_h.py",
+        "bytes": 83779
+      },
+      {
+        "path": "nano_v3_reasoning_parser.py",
+        "bytes": 798
+      },
+      {
+        "path": "special_tokens_map.json",
+        "bytes": 420
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 17077485
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 188049
+      }
+    ]
+  }
+}

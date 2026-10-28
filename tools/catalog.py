@@ -83,6 +83,12 @@ def public_url(value):
         raise ValueError("IP addresses are not catalog download/evidence sources")
 
 
+def recommendation_key(model):
+    """Country is the original model team's origin, not the quantizer's location."""
+    curation = model.get("curation", {})
+    return (curation.get("originCountry") != "CN", curation.get("rank", 10000), model["id"])
+
+
 def load(root):
     config = read(root / "catalog/catalog.json")
     require(set(config) == {"schemaVersion", "sequence", "updatedAt"} and type(config["schemaVersion"]) is int and config["schemaVersion"] == 1, "invalid catalog config")
@@ -103,6 +109,19 @@ def load(root):
             target[value["id"]] = value
     require(models, "empty catalog")
     for model in models.values():
+        curation = model.get("curation")
+        if curation is not None:
+            require(date.fromisoformat(curation["reviewedAt"]).isoformat() == curation["reviewedAt"]
+                    and curation["reviewedAt"] <= config["updatedAt"], "invalid curation review date")
+            for url in curation["evidence"]:
+                public_url(url)
+            names = [item["path"] for item in curation["files"]]
+            require(len(names) == len(set(names)), "duplicate selected model file")
+            require(all(not name.startswith("/") and not any(c in name for c in ("\\", ":", "\x00"))
+                        and all(part not in ("", ".", "..") for part in name.split("/")) for name in names),
+                    "invalid selected model file path")
+            require(sum(item["bytes"] for item in curation["files"]) == model["requirements"]["diskBytes"],
+                    "selected file sizes differ from diskBytes")
         require(all(part not in (".", "..") for part in model["source"]["repo"].split("/")), "invalid repository")
         revision = model["source"]["revision"]
         require(SHA.fullmatch(revision), "model revision must be a complete commit SHA")
@@ -161,8 +180,13 @@ def build(root):
         return {"sha256": digest, "bytes": len(data)}
     report_refs = {key: blob(value) for key, value in reports.items()}
     summaries = []
-    for model in sorted(models.values(), key=lambda m: m["id"]):
+    # Sort before pagination, so all clients (including older v1 clients) see
+    # the same global order. Legacy entries without curation sort last by ID.
+    for model in sorted(models.values(), key=recommendation_key):
         detail = dict(model)
+        # Review metadata is authoring-only. Keep served v1 details compatible
+        # with already shipped clients whose schemas reject unknown fields.
+        detail.pop("curation", None)
         detail["reports"] = [{"id": rid, "hardwareId": h["id"], **report_refs[rid]} for h in model["hardware"] for rid in h["reportIds"]]
         summaries.append({key: model[key] for key in ("id", "name", "description", "format", "quantization", "source")} | {"detail": blob(detail)})
     pages, entries = [], []

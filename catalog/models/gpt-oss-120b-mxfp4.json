@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "kind": "model",
+  "id": "gpt-oss-120b-mxfp4",
+  "name": "gpt-oss 120B · 官方 MXFP4",
+  "description": "英语推理、编程与工具调用的大容量候选；保留官方 MXFP4。需外部支持 gpt-oss 的引擎。",
+  "family": "gpt-oss",
+  "architecture": "gpt_oss",
+  "format": "safetensors",
+  "quantization": "MXFP4",
+  "source": {
+    "repo": "openai/gpt-oss-120b",
+    "revision": "b5c939de8f754692c1647ca79fbf85e8c1e70f8a"
+  },
+  "downloads": {
+    "global": [
+      {
+        "label": "Hugging Face · 固定版本",
+        "url": "https://huggingface.co/openai/gpt-oss-120b/tree/b5c939de8f754692c1647ca79fbf85e8c1e70f8a",
+        "revision": "b5c939de8f754692c1647ca79fbf85e8c1e70f8a",
+        "verification": "upstream",
+        "manifestUrl": null,
+        "manifestSha256": null
+      }
+    ],
+    "cn": []
+  },
+  "requirements": {
+    "systemRamGiB": null,
+    "gpuMemoryGiB": null,
+    "diskBytes": 65276850528,
+    "notes": "官方 Transformers 说明给出保持 MXFP4 的单 GPU 部署方案；实际峰值取决于引擎是否保持 MXFP4，不可回退到 BF16 展开全部专家。保留 Harmony 模板和推理输出解析。先验证 8K–16K、并发 1；社区 GGUF 的性能不能直接移植到官方 safetensors。 以下为单机 128 GiB Linux GB10 的选型建议，未完成本版本的 Sparklet 实机验收。文件体积不是运行内存；需另留系统、加载临时空间、KV cache 和运行环境磁盘空间。 当前 Sparklet 未接入此架构或量化，需使用所述外部引擎。"
+  },
+  "hardware": [
+    {
+      "id": "nvidia-dgx-spark",
+      "name": "NVIDIA DGX Spark / GB10 / Linux / 128 GiB",
+      "status": "unverified",
+      "reportIds": []
+    }
+  ],
+  "curation": {
+    "originCountry": "US",
+    "rank": 20,
+    "reviewedAt": "2026-10-27",
+    "downloads30d": 2857039,
+    "evidence": [
+      "https://huggingface.co/openai/gpt-oss-120b/blob/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/README.md",
+      "https://developers.openai.com/cookbook/articles/gpt-oss/run-transformers",
+      "https://github.com/ggml-org/llama.cpp/blob/master/benches/dgx-spark/dgx-spark.md",
+      "https://github.com/NVIDIA/dgx-spark-playbooks"
+    ],
+    "files": [
+      {
+        "path": "LICENSE",
+        "bytes": 11357
+      },
+      {
+        "path": "chat_template.jinja",
+        "bytes": 16738
+      },
+      {
+        "path": "config.json",
+        "bytes": 2089
+      },
+      {
+        "path": "generation_config.json",
+        "bytes": 177
+      },
+      {
+        "path": "model-00000-of-00014.safetensors",
+        "bytes": 4625017896
+      },
+      {
+        "path": "model-00001-of-00014.safetensors",
+        "bytes": 4115586736
+      },
+      {
+        "path": "model-00002-of-00014.safetensors",
+        "bytes": 4625017888
+      },
+      {
+        "path": "model-00003-of-00014.safetensors",
+        "bytes": 4115586752
+      },
+      {
+        "path": "model-00004-of-00014.safetensors",
+        "bytes": 4625017896
+      },
+      {
+        "path": "model-00005-of-00014.safetensors",
+        "bytes": 4115586696
+      },
+      {
+        "path": "model-00006-of-00014.safetensors",
+        "bytes": 4625017856
+      },
+      {
+        "path": "model-00007-of-00014.safetensors",
+        "bytes": 4060267176
+      },
+      {
+        "path": "model-00008-of-00014.safetensors",
+        "bytes": 4625017896
+      },
+      {
+        "path": "model-00009-of-00014.safetensors",
+        "bytes": 4170906304
+      },
+      {
+        "path": "model-00010-of-00014.safetensors",
+        "bytes": 4625017896
+      },
+      {
+        "path": "model-00011-of-00014.safetensors",
+        "bytes": 4115586752
+      },
+      {
+        "path": "model-00012-of-00014.safetensors",
+        "bytes": 4064660808
+      },
+      {
+        "path": "model-00013-of-00014.safetensors",
+        "bytes": 4625017896
+      },
+      {
+        "path": "model-00014-of-00014.safetensors",
+        "bytes": 4115586736
+      },
+      {
+        "path": "model.safetensors.index.json",
+        "bytes": 54511
+      },
+      {
+        "path": "special_tokens_map.json",
+        "bytes": 98
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 27868174
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 4200
+      }
+    ]
+  }
+}

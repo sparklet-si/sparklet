@@ -3,7 +3,7 @@
   "kind": "model",
   "id": "qwen3-0.6b",
   "name": "Qwen3 0.6B",
-  "description": "Qwen3 系列小型文本模型。",
+  "description": "轻量入门、连通性与开发验证模型；不作为 128 GiB 主力质量推荐。",
   "family": "Qwen3",
   "architecture": "qwen3",
   "format": "safetensors",
@@ -28,15 +28,64 @@
   "requirements": {
     "systemRamGiB": null,
     "gpuMemoryGiB": null,
-    "diskBytes": 1514744783,
-    "notes": "文件体积不等于运行内存；下载和解压需另留磁盘余量。内存需求及上下文对应关系等待可复现实测，不据此自动配置运行参数。"
+    "diskBytes": 1519193708,
+    "notes": "保留供快速下载和功能检查；当前 Sparklet 已有此架构。 以下为单机 128 GiB Linux GB10 的选型建议，未完成本版本的 Sparklet 实机验收。文件体积不是运行内存；需另留系统、加载临时空间、KV cache 和运行环境磁盘空间。"
   },
   "hardware": [
+    {
+      "id": "nvidia-dgx-spark",
+      "name": "NVIDIA DGX Spark / GB10 / Linux / 128 GiB",
+      "status": "unverified",
+      "reportIds": []
+    },
     {
       "id": "nvidia-rtx-spark",
       "name": "NVIDIA RTX Spark / Windows UMA",
       "status": "unverified",
       "reportIds": []
     }
-  ]
+  ],
+  "curation": {
+    "originCountry": "CN",
+    "rank": 170,
+    "reviewedAt": "2026-10-27",
+    "downloads30d": 24034480,
+    "evidence": [
+      "https://huggingface.co/Qwen/Qwen3-0.6B/blob/c1899de289a04d12100db370d81485cdf75e47ca/README.md"
+    ],
+    "files": [
+      {
+        "path": "LICENSE",
+        "bytes": 11343
+      },
+      {
+        "path": "config.json",
+        "bytes": 726
+      },
+      {
+        "path": "generation_config.json",
+        "bytes": 239
+      },
+      {
+        "path": "merges.txt",
+        "bytes": 1671853
+      },
+      {
+        "path": "model.safetensors",
+        "bytes": 1503300328
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 11422654
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 9732
+      },
+      {
+        "path": "vocab.json",
+        "bytes": 2776833
+      }
+    ]
+  }
 }

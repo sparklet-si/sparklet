@@ -1,0 +1,474 @@
+{
+  "schemaVersion": 1,
+  "kind": "model",
+  "id": "nemotron-3.5-super-vl-nvfp4",
+  "name": "Nemotron 3.5 Super VL 120B-A12B · NVFP4",
+  "description": "近期多模态、文档理解与代理候选；NVIDIA 明确列出单台 DGX Spark。需外部 vLLM。",
+  "family": "Nemotron 3.5",
+  "architecture": "nemotron_h_omni",
+  "format": "safetensors",
+  "quantization": "NVFP4",
+  "source": {
+    "repo": "nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4",
+    "revision": "da5b2650a835292c678994a1fa3fb653250fb508"
+  },
+  "downloads": {
+    "global": [
+      {
+        "label": "Hugging Face · 固定版本",
+        "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4/tree/da5b2650a835292c678994a1fa3fb653250fb508",
+        "revision": "da5b2650a835292c678994a1fa3fb653250fb508",
+        "verification": "upstream",
+        "manifestUrl": null,
+        "manifestSha256": null
+      }
+    ],
+    "cn": []
+  },
+  "requirements": {
+    "systemRamGiB": null,
+    "gpuMemoryGiB": null,
+    "diskBytes": 75061188509,
+    "notes": "官方 GB10 配方限制并发 1，使用指定版本 vLLM、Mamba 内核和可选 LiLiCorr 草稿；草稿不含在本条大小内。约 75.1 GB 目标模型文件，视觉 token、KV 与草稿均需另算；不要把模型标称 1M 上下文当作无条件容量。 以下为单机 128 GiB Linux GB10 的选型建议，未完成本版本的 Sparklet 实机验收。文件体积不是运行内存；需另留系统、加载临时空间、KV cache 和运行环境磁盘空间。 当前 Sparklet 未接入此架构或量化，需使用所述外部引擎。"
+  },
+  "hardware": [
+    {
+      "id": "nvidia-dgx-spark",
+      "name": "NVIDIA DGX Spark / GB10 / Linux / 128 GiB",
+      "status": "unverified",
+      "reportIds": []
+    }
+  ],
+  "curation": {
+    "originCountry": "US",
+    "rank": 40,
+    "reviewedAt": "2026-10-27",
+    "downloads30d": 23207,
+    "evidence": [
+      "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4/blob/da5b2650a835292c678994a1fa3fb653250fb508/README.md",
+      "https://github.com/eugr/spark-vllm-docker"
+    ],
+    "files": [
+      {
+        "path": "__init__.py",
+        "bytes": 0
+      },
+      {
+        "path": "chat_template.jinja",
+        "bytes": 12927
+      },
+      {
+        "path": "config.json",
+        "bytes": 8668620
+      },
+      {
+        "path": "configuration_nemotron_h_omni.py",
+        "bytes": 7140
+      },
+      {
+        "path": "configuration_radio.py",
+        "bytes": 4219
+      },
+      {
+        "path": "generation_config.json",
+        "bytes": 209
+      },
+      {
+        "path": "hf_quant_config.json",
+        "bytes": 5631355
+      },
+      {
+        "path": "image_processing_nemotron_h_omni.py",
+        "bytes": 10159
+      },
+      {
+        "path": "model-00001-of-00088.safetensors",
+        "bytes": 2868224280
+      },
+      {
+        "path": "model-00002-of-00088.safetensors",
+        "bytes": 1631773032
+      },
+      {
+        "path": "model-00003-of-00088.safetensors",
+        "bytes": 109705480
+      },
+      {
+        "path": "model-00004-of-00088.safetensors",
+        "bytes": 1631773032
+      },
+      {
+        "path": "model-00005-of-00088.safetensors",
+        "bytes": 109705480
+      },
+      {
+        "path": "model-00006-of-00088.safetensors",
+        "bytes": 1631773032
+      },
+      {
+        "path": "model-00007-of-00088.safetensors",
+        "bytes": 109705480
+      },
+      {
+        "path": "model-00008-of-00088.safetensors",
+        "bytes": 35661352
+      },
+      {
+        "path": "model-00009-of-00088.safetensors",
+        "bytes": 1631773032
+      },
+      {
+        "path": "model-00010-of-00088.safetensors",
+        "bytes": 109705480
+      },
+      {
+        "path": "model-00011-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00012-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00013-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00014-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00015-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00016-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00017-of-00088.safetensors",
+        "bytes": 35661360
+      },
+      {
+        "path": "model-00018-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00019-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00020-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00021-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00022-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00023-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00024-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00025-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00026-of-00088.safetensors",
+        "bytes": 35661360
+      },
+      {
+        "path": "model-00027-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00028-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00029-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00030-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00031-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00032-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00033-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00034-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00035-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00036-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00037-of-00088.safetensors",
+        "bytes": 35661360
+      },
+      {
+        "path": "model-00038-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00039-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00040-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00041-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00042-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00043-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00044-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00045-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00046-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00047-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00048-of-00088.safetensors",
+        "bytes": 35661360
+      },
+      {
+        "path": "model-00049-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00050-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00051-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00052-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00053-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00054-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00055-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00056-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00057-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00058-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00059-of-00088.safetensors",
+        "bytes": 35661360
+      },
+      {
+        "path": "model-00060-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00061-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00062-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00063-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00064-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00065-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00066-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00067-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00068-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00069-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00070-of-00088.safetensors",
+        "bytes": 35661360
+      },
+      {
+        "path": "model-00071-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00072-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00073-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00074-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00075-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00076-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00077-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00078-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00079-of-00088.safetensors",
+        "bytes": 35661360
+      },
+      {
+        "path": "model-00080-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00081-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00082-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00083-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00084-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00085-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00086-of-00088.safetensors",
+        "bytes": 1631777144
+      },
+      {
+        "path": "model-00087-of-00088.safetensors",
+        "bytes": 109705488
+      },
+      {
+        "path": "model-00088-of-00088.safetensors",
+        "bytes": 3938866920
+      },
+      {
+        "path": "model.safetensors.index.json",
+        "bytes": 19521590
+      },
+      {
+        "path": "modeling_nemotron_h_omni.py",
+        "bytes": 22566
+      },
+      {
+        "path": "modeling_radio.py",
+        "bytes": 22804
+      },
+      {
+        "path": "preprocessor_config.json",
+        "bytes": 693
+      },
+      {
+        "path": "processing_nemotron_h_omni.py",
+        "bytes": 16450
+      },
+      {
+        "path": "processor_config.json",
+        "bytes": 1062
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 17077366
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 619
+      },
+      {
+        "path": "ultra_v3_reasoning_parser.py",
+        "bytes": 2490
+      }
+    ]
+  }
+}

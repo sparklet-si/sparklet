@@ -58,6 +58,58 @@ class CatalogTests(unittest.TestCase):
         self.assertEqual([p["count"] for p in index["pages"]], [32, 32, 7])
         self.assertTrue((set(original) - {"index.json"}) & set(generated))
 
+    def test_country_then_rank_then_id_order_applies_before_pagination(self):
+        template = json.loads(self.model.read_text())
+        ids = []
+        for i in range(35):
+            model = copy.deepcopy(template)
+            model["id"] = f"chinese-{i:02}"
+            # The publisher of the quantized checkpoint need not be Chinese.
+            model["curation"] = self.curation(rank=35 - i)
+            (self.model.parent / f'{model["id"]}.json').write_text(json.dumps(model))
+            ids.append(model["id"])
+        self.change(lambda m: m.update(curation=self.curation(country="US", rank=1)))
+        files = catalog.build(self.root)
+        index = json.loads(files["index.json"])
+        summaries = [m for ref in index["pages"] for m in json.loads(files[f'objects/{ref["sha256"]}.json'])["models"]]
+        self.assertEqual([m["id"] for m in summaries], list(reversed(ids)) + ["fixture"])
+        for summary in summaries:
+            detail = json.loads(files[f'objects/{summary["detail"]["sha256"]}.json'])
+            self.assertNotIn("curation", detail, "old v1 clients reject unknown detail fields")
+        # Ties use stable IDs; unreviewed legacy records remain readable and last.
+        self.change(lambda m: m.pop("curation"))
+        self.assertEqual(sorted([
+            {"id": "b", "curation": self.curation()},
+            {"id": "a", "curation": self.curation()},
+            json.loads(self.model.read_text()),
+        ], key=catalog.recommendation_key)[0]["id"], "a")
+        catalog.build(self.root)
+
+    @staticmethod
+    def curation(country="CN", rank=1):
+        return {"originCountry": country, "rank": rank, "reviewedAt": "2026-10-27", "downloads30d": None,
+                "evidence": ["https://example.com/model-card"], "files": [{"path": "model.safetensors", "bytes": 100}]}
+
+    def test_curation_rejects_invalid_order_evidence_and_file_totals(self):
+        self.change(lambda m: m.update(curation=self.curation()))
+        original = self.model.read_bytes()
+        for mutation in (
+            lambda c: c.update(rank=0),
+            lambda c: c.update(rank=True),
+            lambda c: c.update(originCountry="cn"),
+            lambda c: c.update(reviewedAt="2026-10-28"),
+            lambda c: c.update(evidence=["http://example.com/model-card"]),
+            lambda c: c.update(downloads30d=-1),
+            lambda c: c["files"][0].update(bytes=99),
+            lambda c: c["files"][0].update(path="../model.safetensors"),
+            lambda c: c["files"][0].update(path="C:\\model.safetensors"),
+            lambda c: c["files"].append(dict(c["files"][0])),
+        ):
+            self.model.write_bytes(original)
+            self.change(lambda m: mutation(m["curation"]))
+            with self.assertRaises(ValueError):
+                catalog.build(self.root)
+
     def test_long_unicode_summaries_split_before_byte_limit(self):
         template = json.loads(self.model.read_text())
         for i in range(32):

@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "kind": "model",
+  "id": "qwen3.8-flash-next-fp4-local",
+  "name": "Qwen3.8-Flash-Next · NVIDIA FP4-Local",
+  "description": "大模型进阶候选；NVIDIA 提供单台 DGX Spark 配方。需指定社区 vLLM 容器及 PLE 支持。",
+  "family": "Qwen3.8",
+  "architecture": "qwen4_exp",
+  "format": "safetensors",
+  "quantization": "NVFP4 / FP4-Local",
+  "source": {
+    "repo": "nvidia/Qwen3.8-Flash-Next-FP4-Local",
+    "revision": "b9ce18a6887e18c089fdea8509a33e63429a3300"
+  },
+  "downloads": {
+    "global": [
+      {
+        "label": "Hugging Face · 固定版本",
+        "url": "https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local/tree/b9ce18a6887e18c089fdea8509a33e63429a3300",
+        "revision": "b9ce18a6887e18c089fdea8509a33e63429a3300",
+        "verification": "upstream",
+        "manifestUrl": null,
+        "manifestSha256": null
+      }
+    ],
+    "cn": []
+  },
+  "requirements": {
+    "systemRamGiB": null,
+    "gpuMemoryGiB": null,
+    "diskBytes": 102262281102,
+    "notes": "约 102 GB 的混合精度检查点；NVFP4 scale 使用特殊压缩格式，模型卡明确要求专用容器，普通上游 vLLM 不能直接替代。推荐先按 PLE 磁盘卸载方案、小上下文及并发 1 验证，预留高速 SSD；不将官方百万 token 配方视作本机保证。 以下为单机 128 GiB Linux GB10 的选型建议，未完成本版本的 Sparklet 实机验收。文件体积不是运行内存；需另留系统、加载临时空间、KV cache 和运行环境磁盘空间。 当前 Sparklet 未接入此架构或量化，需使用所述外部引擎。"
+  },
+  "hardware": [
+    {
+      "id": "nvidia-dgx-spark",
+      "name": "NVIDIA DGX Spark / GB10 / Linux / 128 GiB",
+      "status": "unverified",
+      "reportIds": []
+    }
+  ],
+  "curation": {
+    "originCountry": "CN",
+    "rank": 130,
+    "reviewedAt": "2026-10-27",
+    "downloads30d": 18029,
+    "evidence": [
+      "https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local/blob/b9ce18a6887e18c089fdea8509a33e63429a3300/README.md",
+      "https://github.com/eugr/spark-vllm-docker"
+    ],
+    "files": [
+      {
+        "path": "chat_template.jinja",
+        "bytes": 8952
+      },
+      {
+        "path": "config.json",
+        "bytes": 75217
+      },
+      {
+        "path": "generation_config.json",
+        "bytes": 202
+      },
+      {
+        "path": "merges.txt",
+        "bytes": 3353259
+      },
+      {
+        "path": "model.safetensors.index.json",
+        "bytes": 47280974
+      },
+      {
+        "path": "preprocessor_config.json",
+        "bytes": 390
+      },
+      {
+        "path": "tensors/model-00001-of-00021.safetensors",
+        "bytes": 5000643504
+      },
+      {
+        "path": "tensors/model-00002-of-00021.safetensors",
+        "bytes": 5002792096
+      },
+      {
+        "path": "tensors/model-00003-of-00021.safetensors",
+        "bytes": 5002927400
+      },
+      {
+        "path": "tensors/model-00004-of-00021.safetensors",
+        "bytes": 5003194672
+      },
+      {
+        "path": "tensors/model-00005-of-00021.safetensors",
+        "bytes": 5003151448
+      },
+      {
+        "path": "tensors/model-00006-of-00021.safetensors",
+        "bytes": 5002892148
+      },
+      {
+        "path": "tensors/model-00007-of-00021.safetensors",
+        "bytes": 5002907708
+      },
+      {
+        "path": "tensors/model-00008-of-00021.safetensors",
+        "bytes": 5003103756
+      },
+      {
+        "path": "tensors/model-00009-of-00021.safetensors",
+        "bytes": 5002976316
+      },
+      {
+        "path": "tensors/model-00010-of-00021.safetensors",
+        "bytes": 5002834136
+      },
+      {
+        "path": "tensors/model-00011-of-00021.safetensors",
+        "bytes": 5002685828
+      },
+      {
+        "path": "tensors/model-00012-of-00021.safetensors",
+        "bytes": 5002912920
+      },
+      {
+        "path": "tensors/model-00013-of-00021.safetensors",
+        "bytes": 5003237060
+      },
+      {
+        "path": "tensors/model-00014-of-00021.safetensors",
+        "bytes": 4845006312
+      },
+      {
+        "path": "tensors/model-00015-of-00021.safetensors",
+        "bytes": 4860574920
+      },
+      {
+        "path": "tensors/model-00016-of-00021.safetensors",
+        "bytes": 4950031028
+      },
+      {
+        "path": "tensors/model-00017-of-00021.safetensors",
+        "bytes": 4950030896
+      },
+      {
+        "path": "tensors/model-00018-of-00021.safetensors",
+        "bytes": 4950030896
+      },
+      {
+        "path": "tensors/model-00019-of-00021.safetensors",
+        "bytes": 4950030904
+      },
+      {
+        "path": "tensors/model-00020-of-00021.safetensors",
+        "bytes": 4950030904
+      },
+      {
+        "path": "tensors/model-00021-of-00021.safetensors",
+        "bytes": 2700016864
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 12809320
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 17928
+      },
+      {
+        "path": "video_preprocessor_config.json",
+        "bytes": 385
+      },
+      {
+        "path": "vocab.json",
+        "bytes": 6722759
+      }
+    ]
+  }
+}

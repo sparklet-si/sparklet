@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "kind": "model",
+  "id": "step-3.7-flash-q3-k-l",
+  "name": "Step-3.7-Flash · 官方 Q3_K_L",
+  "description": "198B 级多模态/推理的有条件备选；低比特量化换取单机容量，非默认日常推荐。需外部 llama.cpp。",
+  "family": "Step",
+  "architecture": "step3p7",
+  "format": "gguf",
+  "quantization": "Q3_K_L",
+  "source": {
+    "repo": "stepfun-ai/Step-3.7-Flash-GGUF",
+    "revision": "0b69336d2fd2adfdef9c66e425f7778196c31482"
+  },
+  "downloads": {
+    "global": [
+      {
+        "label": "Hugging Face · 固定版本",
+        "url": "https://huggingface.co/stepfun-ai/Step-3.7-Flash-GGUF/tree/0b69336d2fd2adfdef9c66e425f7778196c31482",
+        "revision": "0b69336d2fd2adfdef9c66e425f7778196c31482",
+        "verification": "upstream",
+        "manifestUrl": null,
+        "manifestSha256": null
+      }
+    ],
+    "cn": []
+  },
+  "requirements": {
+    "systemRamGiB": null,
+    "gpuMemoryGiB": null,
+    "diskBytes": 106477257312,
+    "notes": "下载 Q3_K_L/ 的 3 个分片；本条还计入 mmproj-step3.7-flash-f16.gguf。官方模型卡列出同量化在 DGX Spark 的基准，但缺少本目录所需的完整环境/峰值报告。约 106.5 GB 文件，先以 4K–8K、并发 1 验证，勿直接套用宣传中的长上下文配置。 以下为单机 128 GiB Linux GB10 的选型建议，未完成本版本的 Sparklet 实机验收。文件体积不是运行内存；需另留系统、加载临时空间、KV cache 和运行环境磁盘空间。 当前 Sparklet 未接入此架构或量化，需使用所述外部引擎。"
+  },
+  "hardware": [
+    {
+      "id": "nvidia-dgx-spark",
+      "name": "NVIDIA DGX Spark / GB10 / Linux / 128 GiB",
+      "status": "unverified",
+      "reportIds": []
+    }
+  ],
+  "curation": {
+    "originCountry": "CN",
+    "rank": 140,
+    "reviewedAt": "2026-10-27",
+    "downloads30d": 5739,
+    "evidence": [
+      "https://huggingface.co/stepfun-ai/Step-3.7-Flash-GGUF/blob/0b69336d2fd2adfdef9c66e425f7778196c31482/README.md"
+    ],
+    "files": [
+      {
+        "path": "Q3_K_L/Step-3.7-flash-Q3_K_L-00001-of-00003.gguf",
+        "bytes": 46544161344
+      },
+      {
+        "path": "Q3_K_L/Step-3.7-flash-Q3_K_L-00002-of-00003.gguf",
+        "bytes": 46401560832
+      },
+      {
+        "path": "Q3_K_L/Step-3.7-flash-Q3_K_L-00003-of-00003.gguf",
+        "bytes": 9558706368
+      },
+      {
+        "path": "mmproj-step3.7-flash-f16.gguf",
+        "bytes": 3972828768
+      }
+    ]
+  }
+}

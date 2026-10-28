@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "kind": "model",
+  "id": "mistral-small-4-nvfp4",
+  "name": "Mistral Small 4 119B · 官方 NVFP4",
+  "description": "多语言、编程、推理与视觉的大模型备选；官方压缩检查点。需外部 vLLM / SGLang。",
+  "family": "Mistral Small 4",
+  "architecture": "mistral3",
+  "format": "safetensors",
+  "quantization": "NVFP4",
+  "source": {
+    "repo": "mistralai/Mistral-Small-4-119B-2603-NVFP4",
+    "revision": "45331841b631f4e281df8e959ea3cc9beb84298a"
+  },
+  "downloads": {
+    "global": [
+      {
+        "label": "Hugging Face · 固定版本",
+        "url": "https://huggingface.co/mistralai/Mistral-Small-4-119B-2603-NVFP4/tree/45331841b631f4e281df8e959ea3cc9beb84298a",
+        "revision": "45331841b631f4e281df8e959ea3cc9beb84298a",
+        "verification": "upstream",
+        "manifestUrl": null,
+        "manifestSha256": null
+      }
+    ],
+    "cn": []
+  },
+  "requirements": {
+    "systemRamGiB": null,
+    "gpuMemoryGiB": null,
+    "diskBytes": 70846514353,
+    "notes": "约 70.8 GB 模型文件，有容量可行性但单台 GB10 的持续性能仍待核验。官方示例的 tensor parallel 2 和高并发不是单机配方；应以支持 SM121 的引擎、单 GPU、8K 与并发 1 起步，禁止直接照搬示例。 以下为单机 128 GiB Linux GB10 的选型建议，未完成本版本的 Sparklet 实机验收。文件体积不是运行内存；需另留系统、加载临时空间、KV cache 和运行环境磁盘空间。 当前 Sparklet 未接入此架构或量化，需使用所述外部引擎。"
+  },
+  "hardware": [
+    {
+      "id": "nvidia-dgx-spark",
+      "name": "NVIDIA DGX Spark / GB10 / Linux / 128 GiB",
+      "status": "unverified",
+      "reportIds": []
+    }
+  ],
+  "curation": {
+    "originCountry": "FR",
+    "rank": 90,
+    "reviewedAt": "2026-10-27",
+    "downloads30d": 2828,
+    "evidence": [
+      "https://huggingface.co/mistralai/Mistral-Small-4-119B-2603-NVFP4/blob/45331841b631f4e281df8e959ea3cc9beb84298a/README.md",
+      "https://github.com/eugr/spark-vllm-docker"
+    ],
+    "files": [
+      {
+        "path": "SYSTEM_PROMPT.txt",
+        "bytes": 2372
+      },
+      {
+        "path": "chat_template.jinja",
+        "bytes": 15168
+      },
+      {
+        "path": "consolidated-00001-of-00013.safetensors",
+        "bytes": 5781786100
+      },
+      {
+        "path": "consolidated-00002-of-00013.safetensors",
+        "bytes": 5744553748
+      },
+      {
+        "path": "consolidated-00003-of-00013.safetensors",
+        "bytes": 5749272664
+      },
+      {
+        "path": "consolidated-00004-of-00013.safetensors",
+        "bytes": 5739834568
+      },
+      {
+        "path": "consolidated-00005-of-00013.safetensors",
+        "bytes": 5744552812
+      },
+      {
+        "path": "consolidated-00006-of-00013.safetensors",
+        "bytes": 5749272624
+      },
+      {
+        "path": "consolidated-00007-of-00013.safetensors",
+        "bytes": 5739834752
+      },
+      {
+        "path": "consolidated-00008-of-00013.safetensors",
+        "bytes": 5744552508
+      },
+      {
+        "path": "consolidated-00009-of-00013.safetensors",
+        "bytes": 5749272616
+      },
+      {
+        "path": "consolidated-00010-of-00013.safetensors",
+        "bytes": 5739834152
+      },
+      {
+        "path": "consolidated-00011-of-00013.safetensors",
+        "bytes": 5744550116
+      },
+      {
+        "path": "consolidated-00012-of-00013.safetensors",
+        "bytes": 7579242060
+      },
+      {
+        "path": "consolidated-00013-of-00013.safetensors",
+        "bytes": 1469648
+      },
+      {
+        "path": "consolidated.safetensors.index.json",
+        "bytes": 5090861
+      },
+      {
+        "path": "params.json",
+        "bytes": 2969
+      },
+      {
+        "path": "processor_config.json",
+        "bytes": 701
+      },
+      {
+        "path": "tekken.json",
+        "bytes": 16275354
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 17077420
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 21140
+      }
+    ]
+  }
+}

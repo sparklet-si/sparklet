@@ -3,7 +3,7 @@
   "kind": "model",
   "id": "qwen3.8-flash-next-q2-k",
   "name": "Qwen3.8-Flash-Next · Bartowski Q2_K",
-  "description": "Q2_K GGUF 变体；需支持对应架构的 GGUF 服务构建。",
+  "description": "保留的 Q2_K 大模型备选；低比特质量与 PLE 映射开销需单独评估。需 GGUF 服务构建。",
   "family": "Qwen3.8",
   "architecture": "qwen3.8",
   "format": "gguf",
@@ -29,14 +29,43 @@
     "systemRamGiB": null,
     "gpuMemoryGiB": null,
     "diskBytes": 80926779072,
-    "notes": "文件体积不等于运行内存；下载和解压需另留磁盘余量。内存需求及上下文对应关系等待可复现实测，不据此自动配置运行参数。"
+    "notes": "只下载 Qwen3.8-Flash-Next-Q2_K/ 的 3 个分片。本条保留已有集成路线，2-bit 不能代替更高精度质量结论；从 4K、并发 1 验证。 以下为单机 128 GiB Linux GB10 的选型建议，未完成本版本的 Sparklet 实机验收。文件体积不是运行内存；需另留系统、加载临时空间、KV cache 和运行环境磁盘空间。"
   },
   "hardware": [
+    {
+      "id": "nvidia-dgx-spark",
+      "name": "NVIDIA DGX Spark / GB10 / Linux / 128 GiB",
+      "status": "unverified",
+      "reportIds": []
+    },
     {
       "id": "nvidia-rtx-spark",
       "name": "NVIDIA RTX Spark / Windows UMA",
       "status": "unverified",
       "reportIds": []
     }
-  ]
+  ],
+  "curation": {
+    "originCountry": "CN",
+    "rank": 180,
+    "reviewedAt": "2026-10-27",
+    "downloads30d": 96102,
+    "evidence": [
+      "https://huggingface.co/bartowski/Qwen3.8-Flash-Next-GGUF/blob/db3a185731e162be9ffa4d52d20d7509939e60e8/README.md"
+    ],
+    "files": [
+      {
+        "path": "Qwen3.8-Flash-Next-Q2_K/Qwen3.8-Flash-Next-Q2_K-00001-of-00003.gguf",
+        "bytes": 39992567104
+      },
+      {
+        "path": "Qwen3.8-Flash-Next-Q2_K/Qwen3.8-Flash-Next-Q2_K-00002-of-00003.gguf",
+        "bytes": 39892013024
+      },
+      {
+        "path": "Qwen3.8-Flash-Next-Q2_K/Qwen3.8-Flash-Next-Q2_K-00003-of-00003.gguf",
+        "bytes": 1042198944
+      }
+    ]
+  }
 }

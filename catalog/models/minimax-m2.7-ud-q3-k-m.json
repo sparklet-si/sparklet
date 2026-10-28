@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "kind": "model",
+  "id": "minimax-m2.7-ud-q3-k-m",
+  "name": "MiniMax M2.7 · UD-Q3_K_M",
+  "description": "编程与代理的大模型有条件备选；3-bit 量化有质量代价、运行余量较紧。需外部 llama.cpp。",
+  "family": "MiniMax",
+  "architecture": "minimax_m2",
+  "format": "gguf",
+  "quantization": "UD-Q3_K_M",
+  "source": {
+    "repo": "unsloth/MiniMax-M2.7-GGUF",
+    "revision": "d2a05ccf69491b03db0cc40b335aec14bdaf7198"
+  },
+  "downloads": {
+    "global": [
+      {
+        "label": "Hugging Face · 固定版本",
+        "url": "https://huggingface.co/unsloth/MiniMax-M2.7-GGUF/tree/d2a05ccf69491b03db0cc40b335aec14bdaf7198",
+        "revision": "d2a05ccf69491b03db0cc40b335aec14bdaf7198",
+        "verification": "upstream",
+        "manifestUrl": null,
+        "manifestSha256": null
+      }
+    ],
+    "cn": []
+  },
+  "requirements": {
+    "systemRamGiB": null,
+    "gpuMemoryGiB": null,
+    "diskBytes": 101243668768,
+    "notes": "只选 UD-Q3_K_M/ 全部 4 个分片（包括小首片）。约 101.2 GB 文件；4-bit 版本不能按本条容量推断。建议 4K–8K、并发 1 起步，量化质量、加载峰值和持续运行均需验证；Modified MIT 条款见上游 LICENSE。 以下为单机 128 GiB Linux GB10 的选型建议，未完成本版本的 Sparklet 实机验收。文件体积不是运行内存；需另留系统、加载临时空间、KV cache 和运行环境磁盘空间。 当前 Sparklet 未接入此架构或量化，需使用所述外部引擎。"
+  },
+  "hardware": [
+    {
+      "id": "nvidia-dgx-spark",
+      "name": "NVIDIA DGX Spark / GB10 / Linux / 128 GiB",
+      "status": "unverified",
+      "reportIds": []
+    }
+  ],
+  "curation": {
+    "originCountry": "CN",
+    "rank": 150,
+    "reviewedAt": "2026-10-27",
+    "downloads30d": 5428,
+    "evidence": [
+      "https://huggingface.co/unsloth/MiniMax-M2.7-GGUF/blob/d2a05ccf69491b03db0cc40b335aec14bdaf7198/README.md",
+      "https://huggingface.co/MiniMaxAI/MiniMax-M2.7"
+    ],
+    "files": [
+      {
+        "path": "UD-Q3_K_M/MiniMax-M2.7-UD-Q3_K_M-00001-of-00004.gguf",
+        "bytes": 8237824
+      },
+      {
+        "path": "UD-Q3_K_M/MiniMax-M2.7-UD-Q3_K_M-00002-of-00004.gguf",
+        "bytes": 49552151968
+      },
+      {
+        "path": "UD-Q3_K_M/MiniMax-M2.7-UD-Q3_K_M-00003-of-00004.gguf",
+        "bytes": 49604290720
+      },
+      {
+        "path": "UD-Q3_K_M/MiniMax-M2.7-UD-Q3_K_M-00004-of-00004.gguf",
+        "bytes": 2078988256
+      }
+    ]
+  }
+}

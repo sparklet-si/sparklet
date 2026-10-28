@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "kind": "model",
+  "id": "qwen3-14b-bf16",
+  "name": "Qwen3 14B · BF16",
+  "description": "中文通用与质量/内存折中；当前 Sparklet 已有对应架构，可登记后手动下载。",
+  "family": "Qwen3",
+  "architecture": "qwen3",
+  "format": "safetensors",
+  "quantization": "BF16",
+  "source": {
+    "repo": "Qwen/Qwen3-14B",
+    "revision": "40c069824f4251a91eefaf281ebe4c544efd3e18"
+  },
+  "downloads": {
+    "global": [
+      {
+        "label": "Hugging Face · 固定版本",
+        "url": "https://huggingface.co/Qwen/Qwen3-14B/tree/40c069824f4251a91eefaf281ebe4c544efd3e18",
+        "revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+        "verification": "upstream",
+        "manifestUrl": null,
+        "manifestSha256": null
+      }
+    ],
+    "cn": []
+  },
+  "requirements": {
+    "systemRamGiB": null,
+    "gpuMemoryGiB": null,
+    "diskBytes": 29552595536,
+    "notes": "使用官方未量化 safetensors。Sparklet 的 Qwen3 适配器为非思考模式、普通 attention、单请求解码；先用 CUDA、4K 上下文验证，较长上下文会增加注意力临时空间及 KV 内存。可登记不等于此固定版本已在本机验收。 以下为单机 128 GiB Linux GB10 的选型建议，未完成本版本的 Sparklet 实机验收。文件体积不是运行内存；需另留系统、加载临时空间、KV cache 和运行环境磁盘空间。"
+  },
+  "hardware": [
+    {
+      "id": "nvidia-dgx-spark",
+      "name": "NVIDIA DGX Spark / GB10 / Linux / 128 GiB",
+      "status": "unverified",
+      "reportIds": []
+    }
+  ],
+  "curation": {
+    "originCountry": "CN",
+    "rank": 60,
+    "reviewedAt": "2026-10-27",
+    "downloads30d": 11433704,
+    "evidence": [
+      "https://huggingface.co/Qwen/Qwen3-14B/blob/40c069824f4251a91eefaf281ebe4c544efd3e18/README.md"
+    ],
+    "files": [
+      {
+        "path": "LICENSE",
+        "bytes": 11343
+      },
+      {
+        "path": "config.json",
+        "bytes": 728
+      },
+      {
+        "path": "generation_config.json",
+        "bytes": 239
+      },
+      {
+        "path": "merges.txt",
+        "bytes": 1671853
+      },
+      {
+        "path": "model-00001-of-00008.safetensors",
+        "bytes": 3841788544
+      },
+      {
+        "path": "model-00002-of-00008.safetensors",
+        "bytes": 3963750816
+      },
+      {
+        "path": "model-00003-of-00008.safetensors",
+        "bytes": 3963750880
+      },
+      {
+        "path": "model-00004-of-00008.safetensors",
+        "bytes": 3963750880
+      },
+      {
+        "path": "model-00005-of-00008.safetensors",
+        "bytes": 3963750880
+      },
+      {
+        "path": "model-00006-of-00008.safetensors",
+        "bytes": 3963750880
+      },
+      {
+        "path": "model-00007-of-00008.safetensors",
+        "bytes": 3963750880
+      },
+      {
+        "path": "model-00008-of-00008.safetensors",
+        "bytes": 1912371880
+      },
+      {
+        "path": "model.safetensors.index.json",
+        "bytes": 36514
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 11422654
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 9732
+      },
+      {
+        "path": "vocab.json",
+        "bytes": 2776833
+      }
+    ]
+  }
+}

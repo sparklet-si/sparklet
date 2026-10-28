@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "kind": "model",
+  "id": "qwen3.5-122b-a10b-nvfp4",
+  "name": "Qwen3.5 122B-A10B · NVIDIA NVFP4",
+  "description": "容量较大的通用/多模态 MoE 备选；优先用于能接受较高内存占用的任务。需外部 vLLM。",
+  "family": "Qwen3.5",
+  "architecture": "qwen3_5_moe",
+  "format": "safetensors",
+  "quantization": "NVFP4",
+  "source": {
+    "repo": "nvidia/Qwen3.5-122B-A10B-NVFP4",
+    "revision": "98915d837c4e7c87ac8296d02e89de19b3207e6d"
+  },
+  "downloads": {
+    "global": [
+      {
+        "label": "Hugging Face · 固定版本",
+        "url": "https://huggingface.co/nvidia/Qwen3.5-122B-A10B-NVFP4/tree/98915d837c4e7c87ac8296d02e89de19b3207e6d",
+        "revision": "98915d837c4e7c87ac8296d02e89de19b3207e6d",
+        "verification": "upstream",
+        "manifestUrl": null,
+        "manifestSha256": null
+      }
+    ],
+    "cn": []
+  },
+  "requirements": {
+    "systemRamGiB": null,
+    "gpuMemoryGiB": null,
+    "diskBytes": 83531041256,
+    "notes": "文件约 83.5 GB，128 GiB 机器仍须扣除系统、加载峰值及 KV；不能沿用数据中心多 GPU 配置。建议 8K、并发 1 起步，先确认完整权重保持量化驻留。 以下为单机 128 GiB Linux GB10 的选型建议，未完成本版本的 Sparklet 实机验收。文件体积不是运行内存；需另留系统、加载临时空间、KV cache 和运行环境磁盘空间。 当前 Sparklet 未接入此架构或量化，需使用所述外部引擎。"
+  },
+  "hardware": [
+    {
+      "id": "nvidia-dgx-spark",
+      "name": "NVIDIA DGX Spark / GB10 / Linux / 128 GiB",
+      "status": "unverified",
+      "reportIds": []
+    }
+  ],
+  "curation": {
+    "originCountry": "CN",
+    "rank": 100,
+    "reviewedAt": "2026-10-27",
+    "downloads30d": 196375,
+    "evidence": [
+      "https://huggingface.co/nvidia/Qwen3.5-122B-A10B-NVFP4/blob/98915d837c4e7c87ac8296d02e89de19b3207e6d/README.md",
+      "https://github.com/eugr/spark-vllm-docker"
+    ],
+    "files": [
+      {
+        "path": "chat_template.jinja",
+        "bytes": 7756
+      },
+      {
+        "path": "config.json",
+        "bytes": 14274
+      },
+      {
+        "path": "generation_config.json",
+        "bytes": 244
+      },
+      {
+        "path": "hf_quant_config.json",
+        "bytes": 9583
+      },
+      {
+        "path": "model-00001-of-00009.safetensors",
+        "bytes": 10000615592
+      },
+      {
+        "path": "model-00002-of-00009.safetensors",
+        "bytes": 10002004216
+      },
+      {
+        "path": "model-00003-of-00009.safetensors",
+        "bytes": 10001267992
+      },
+      {
+        "path": "model-00004-of-00009.safetensors",
+        "bytes": 10002020448
+      },
+      {
+        "path": "model-00005-of-00009.safetensors",
+        "bytes": 10001267592
+      },
+      {
+        "path": "model-00006-of-00009.safetensors",
+        "bytes": 9974109760
+      },
+      {
+        "path": "model-00007-of-00009.safetensors",
+        "bytes": 10002339192
+      },
+      {
+        "path": "model-00008-of-00009.safetensors",
+        "bytes": 9999073984
+      },
+      {
+        "path": "model-00009-of-00009.safetensors",
+        "bytes": 3512306232
+      },
+      {
+        "path": "model.safetensors.index.json",
+        "bytes": 16456165
+      },
+      {
+        "path": "preprocessor_config.json",
+        "bytes": 390
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 12807982
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 16710
+      },
+      {
+        "path": "video_preprocessor_config.json",
+        "bytes": 385
+      },
+      {
+        "path": "vocab.json",
+        "bytes": 6722759
+      }
+    ]
+  }
+}

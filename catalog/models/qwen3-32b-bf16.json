@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "kind": "model",
+  "id": "qwen3-32b-bf16",
+  "name": "Qwen3 32B · BF16",
+  "description": "较大稠密文本模型与完整精度对照；当前 Sparklet 已有对应架构，可登记后手动下载。",
+  "family": "Qwen3",
+  "architecture": "qwen3",
+  "format": "safetensors",
+  "quantization": "BF16",
+  "source": {
+    "repo": "Qwen/Qwen3-32B",
+    "revision": "9216db5781bf21249d130ec9da846c4624c16137"
+  },
+  "downloads": {
+    "global": [
+      {
+        "label": "Hugging Face · 固定版本",
+        "url": "https://huggingface.co/Qwen/Qwen3-32B/tree/9216db5781bf21249d130ec9da846c4624c16137",
+        "revision": "9216db5781bf21249d130ec9da846c4624c16137",
+        "verification": "upstream",
+        "manifestUrl": null,
+        "manifestSha256": null
+      }
+    ],
+    "cn": []
+  },
+  "requirements": {
+    "systemRamGiB": null,
+    "gpuMemoryGiB": null,
+    "diskBytes": 65540280272,
+    "notes": "使用官方未量化 safetensors。Sparklet 的 Qwen3 适配器为非思考模式、普通 attention、单请求解码；先用 CUDA、4K 上下文验证，较长上下文会增加注意力临时空间及 KV 内存。可登记不等于此固定版本已在本机验收。 以下为单机 128 GiB Linux GB10 的选型建议，未完成本版本的 Sparklet 实机验收。文件体积不是运行内存；需另留系统、加载临时空间、KV cache 和运行环境磁盘空间。"
+  },
+  "hardware": [
+    {
+      "id": "nvidia-dgx-spark",
+      "name": "NVIDIA DGX Spark / GB10 / Linux / 128 GiB",
+      "status": "unverified",
+      "reportIds": []
+    }
+  ],
+  "curation": {
+    "originCountry": "CN",
+    "rank": 90,
+    "reviewedAt": "2026-10-27",
+    "downloads30d": 2878593,
+    "evidence": [
+      "https://huggingface.co/Qwen/Qwen3-32B/blob/9216db5781bf21249d130ec9da846c4624c16137/README.md"
+    ],
+    "files": [
+      {
+        "path": "LICENSE",
+        "bytes": 11343
+      },
+      {
+        "path": "config.json",
+        "bytes": 728
+      },
+      {
+        "path": "generation_config.json",
+        "bytes": 239
+      },
+      {
+        "path": "merges.txt",
+        "bytes": 1671853
+      },
+      {
+        "path": "model-00001-of-00017.safetensors",
+        "bytes": 3957109648
+      },
+      {
+        "path": "model-00002-of-00017.safetensors",
+        "bytes": 3900791760
+      },
+      {
+        "path": "model-00003-of-00017.safetensors",
+        "bytes": 3900791760
+      },
+      {
+        "path": "model-00004-of-00017.safetensors",
+        "bytes": 3900791800
+      },
+      {
+        "path": "model-00005-of-00017.safetensors",
+        "bytes": 3900791800
+      },
+      {
+        "path": "model-00006-of-00017.safetensors",
+        "bytes": 3900791800
+      },
+      {
+        "path": "model-00007-of-00017.safetensors",
+        "bytes": 3900791800
+      },
+      {
+        "path": "model-00008-of-00017.safetensors",
+        "bytes": 3900791800
+      },
+      {
+        "path": "model-00009-of-00017.safetensors",
+        "bytes": 3900791800
+      },
+      {
+        "path": "model-00010-of-00017.safetensors",
+        "bytes": 3900791800
+      },
+      {
+        "path": "model-00011-of-00017.safetensors",
+        "bytes": 3900791800
+      },
+      {
+        "path": "model-00012-of-00017.safetensors",
+        "bytes": 3900791800
+      },
+      {
+        "path": "model-00013-of-00017.safetensors",
+        "bytes": 3900791800
+      },
+      {
+        "path": "model-00014-of-00017.safetensors",
+        "bytes": 3900791800
+      },
+      {
+        "path": "model-00015-of-00017.safetensors",
+        "bytes": 3900791800
+      },
+      {
+        "path": "model-00016-of-00017.safetensors",
+        "bytes": 3900791800
+      },
+      {
+        "path": "model-00017-of-00017.safetensors",
+        "bytes": 3055341992
+      },
+      {
+        "path": "model.safetensors.index.json",
+        "bytes": 58330
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 11422654
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 9732
+      },
+      {
+        "path": "vocab.json",
+        "bytes": 2776833
+      }
+    ]
+  }
+}

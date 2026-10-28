@@ -294,6 +294,84 @@
       },
       "maxItems": 32,
       "minItems": 0
+    },
+    "curation": {
+      "description": "Authoring-only review metadata; excluded from served v1 model objects.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "originCountry",
+        "rank",
+        "reviewedAt",
+        "downloads30d",
+        "evidence",
+        "files"
+      ],
+      "properties": {
+        "originCountry": {
+          "type": "string",
+          "enum": [
+            "CN",
+            "US",
+            "FR",
+            "other",
+            "unknown"
+          ]
+        },
+        "rank": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9999
+        },
+        "reviewedAt": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 10
+        },
+        "downloads30d": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          }
+        },
+        "files": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 256,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "path",
+              "bytes"
+            ],
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 500
+              },
+              "bytes": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

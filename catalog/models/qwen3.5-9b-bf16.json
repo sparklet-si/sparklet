@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "kind": "model",
+  "id": "qwen3.5-9b-bf16",
+  "name": "Qwen3.5 9B · BF16",
+  "description": "轻量中文与图像理解候选；完整 BF16 权重可保留较大运行余量。需外部 vLLM / Transformers。",
+  "family": "Qwen3.5",
+  "architecture": "qwen3_5",
+  "format": "safetensors",
+  "quantization": "BF16",
+  "source": {
+    "repo": "Qwen/Qwen3.5-9B",
+    "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a"
+  },
+  "downloads": {
+    "global": [
+      {
+        "label": "Hugging Face · 固定版本",
+        "url": "https://huggingface.co/Qwen/Qwen3.5-9B/tree/c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+        "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+        "verification": "upstream",
+        "manifestUrl": null,
+        "manifestSha256": null
+      }
+    ],
+    "cn": []
+  },
+  "requirements": {
+    "systemRamGiB": null,
+    "gpuMemoryGiB": null,
+    "diskBytes": 19329314448,
+    "notes": "不要与已支持的 Qwen3 稠密文本架构混同；这是 Qwen3.5 多模态架构。从 8K、并发 1 验证，图像编码器及视觉 token 也消耗内存。 以下为单机 128 GiB Linux GB10 的选型建议，未完成本版本的 Sparklet 实机验收。文件体积不是运行内存；需另留系统、加载临时空间、KV cache 和运行环境磁盘空间。 当前 Sparklet 未接入此架构或量化，需使用所述外部引擎。"
+  },
+  "hardware": [
+    {
+      "id": "nvidia-dgx-spark",
+      "name": "NVIDIA DGX Spark / GB10 / Linux / 128 GiB",
+      "status": "unverified",
+      "reportIds": []
+    }
+  ],
+  "curation": {
+    "originCountry": "CN",
+    "rank": 50,
+    "reviewedAt": "2026-10-27",
+    "downloads30d": 6184812,
+    "evidence": [
+      "https://huggingface.co/Qwen/Qwen3.5-9B/blob/c202236235762e1c871ad0ccb60c8ee5ba337b9a/README.md",
+      "https://github.com/eugr/spark-vllm-docker"
+    ],
+    "files": [
+      {
+        "path": "LICENSE",
+        "bytes": 11544
+      },
+      {
+        "path": "chat_template.jinja",
+        "bytes": 7756
+      },
+      {
+        "path": "config.json",
+        "bytes": 3126
+      },
+      {
+        "path": "merges.txt",
+        "bytes": 3353259
+      },
+      {
+        "path": "model.safetensors-00001-of-00004.safetensors",
+        "bytes": 5276436216
+      },
+      {
+        "path": "model.safetensors-00002-of-00004.safetensors",
+        "bytes": 5335161512
+      },
+      {
+        "path": "model.safetensors-00003-of-00004.safetensors",
+        "bytes": 5368717440
+      },
+      {
+        "path": "model.safetensors-00004-of-00004.safetensors",
+        "bytes": 3325995712
+      },
+      {
+        "path": "model.safetensors.index.json",
+        "bytes": 79657
+      },
+      {
+        "path": "preprocessor_config.json",
+        "bytes": 390
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 12807982
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 16710
+      },
+      {
+        "path": "video_preprocessor_config.json",
+        "bytes": 385
+      },
+      {
+        "path": "vocab.json",
+        "bytes": 6722759
+      }
+    ]
+  }
+}

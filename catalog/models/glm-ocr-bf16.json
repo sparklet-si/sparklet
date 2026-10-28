@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "kind": "model",
+  "id": "glm-ocr-bf16",
+  "name": "GLM-OCR · BF16",
+  "description": "文档 OCR、表格与公式提取专项候选；体积小、近期活跃。需外部 GLM-OCR / vLLM 环境。",
+  "family": "GLM-OCR",
+  "architecture": "glm_ocr",
+  "format": "safetensors",
+  "quantization": "BF16",
+  "source": {
+    "repo": "zai-org/GLM-OCR",
+    "revision": "2e85a62840ccac27daa451df36c736c4636b8628"
+  },
+  "downloads": {
+    "global": [
+      {
+        "label": "Hugging Face · 固定版本",
+        "url": "https://huggingface.co/zai-org/GLM-OCR/tree/2e85a62840ccac27daa451df36c736c4636b8628",
+        "revision": "2e85a62840ccac27daa451df36c736c4636b8628",
+        "verification": "upstream",
+        "manifestUrl": null,
+        "manifestSha256": null
+      }
+    ],
+    "cn": []
+  },
+  "requirements": {
+    "systemRamGiB": null,
+    "gpuMemoryGiB": null,
+    "diskBytes": 2657427420,
+    "notes": "官方完整目录；图像分辨率、裁切页数和批量会改变内存。此条属于文档识别，不能作为通用聊天模型，也未接入 Sparklet 的语音或文本组件。 以下为单机 128 GiB Linux GB10 的选型建议，未完成本版本的 Sparklet 实机验收。文件体积不是运行内存；需另留系统、加载临时空间、KV cache 和运行环境磁盘空间。 当前 Sparklet 未接入此架构或量化，需使用所述外部引擎。"
+  },
+  "hardware": [
+    {
+      "id": "nvidia-dgx-spark",
+      "name": "NVIDIA DGX Spark / GB10 / Linux / 128 GiB",
+      "status": "unverified",
+      "reportIds": []
+    }
+  ],
+  "curation": {
+    "originCountry": "CN",
+    "rank": 120,
+    "reviewedAt": "2026-10-27",
+    "downloads30d": 1745838,
+    "evidence": [
+      "https://huggingface.co/zai-org/GLM-OCR/blob/2e85a62840ccac27daa451df36c736c4636b8628/README.md",
+      "https://github.com/zai-org/GLM-OCR"
+    ],
+    "files": [
+      {
+        "path": "chat_template.jinja",
+        "bytes": 4606
+      },
+      {
+        "path": "config.json",
+        "bytes": 1737
+      },
+      {
+        "path": "generation_config.json",
+        "bytes": 165
+      },
+      {
+        "path": "model.safetensors",
+        "bytes": 2650579464
+      },
+      {
+        "path": "preprocessor_config.json",
+        "bytes": 367
+      },
+      {
+        "path": "processor_config.json",
+        "bytes": 1334
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 6838609
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 1138
+      }
+    ]
+  }
+}

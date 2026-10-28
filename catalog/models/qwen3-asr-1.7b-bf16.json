@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "kind": "model",
+  "id": "qwen3-asr-1.7b-bf16",
+  "name": "Qwen3-ASR 1.7B · BF16",
+  "description": "语音识别专项候选，适合中英及多语言转写；不作为通用聊天模型。需外部 Qwen3-ASR 推理环境。",
+  "family": "Qwen3-ASR",
+  "architecture": "qwen3_asr",
+  "format": "safetensors",
+  "quantization": "BF16",
+  "source": {
+    "repo": "Qwen/Qwen3-ASR-1.7B",
+    "revision": "7278e1e70fe206f11671096ffdd38061171dd6e5"
+  },
+  "downloads": {
+    "global": [
+      {
+        "label": "Hugging Face · 固定版本",
+        "url": "https://huggingface.co/Qwen/Qwen3-ASR-1.7B/tree/7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "verification": "upstream",
+        "manifestUrl": null,
+        "manifestSha256": null
+      }
+    ],
+    "cn": []
+  },
+  "requirements": {
+    "systemRamGiB": null,
+    "gpuMemoryGiB": null,
+    "diskBytes": 4703055333,
+    "notes": "官方完整 safetensors 目录；语音编码器、音频时长和批量决定运行内存，不能用文本上下文预算替代。当前 FireRedASR 组件不能直接加载 Qwen3-ASR。 以下为单机 128 GiB Linux GB10 的选型建议，未完成本版本的 Sparklet 实机验收。文件体积不是运行内存；需另留系统、加载临时空间、KV cache 和运行环境磁盘空间。 当前 Sparklet 未接入此架构或量化，需使用所述外部引擎。"
+  },
+  "hardware": [
+    {
+      "id": "nvidia-dgx-spark",
+      "name": "NVIDIA DGX Spark / GB10 / Linux / 128 GiB",
+      "status": "unverified",
+      "reportIds": []
+    }
+  ],
+  "curation": {
+    "originCountry": "CN",
+    "rank": 110,
+    "reviewedAt": "2026-10-27",
+    "downloads30d": 1389419,
+    "evidence": [
+      "https://huggingface.co/Qwen/Qwen3-ASR-1.7B/blob/7278e1e70fe206f11671096ffdd38061171dd6e5/README.md",
+      "https://github.com/QwenLM/Qwen3-ASR"
+    ],
+    "files": [
+      {
+        "path": "chat_template.json",
+        "bytes": 1161
+      },
+      {
+        "path": "config.json",
+        "bytes": 6194
+      },
+      {
+        "path": "generation_config.json",
+        "bytes": 142
+      },
+      {
+        "path": "merges.txt",
+        "bytes": 1671853
+      },
+      {
+        "path": "model-00001-of-00002.safetensors",
+        "bytes": 4220320824
+      },
+      {
+        "path": "model-00002-of-00002.safetensors",
+        "bytes": 478200688
+      },
+      {
+        "path": "model.safetensors.index.json",
+        "bytes": 64821
+      },
+      {
+        "path": "preprocessor_config.json",
+        "bytes": 330
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 12487
+      },
+      {
+        "path": "vocab.json",
+        "bytes": 2776833
+      }
+    ]
+  }
+}
