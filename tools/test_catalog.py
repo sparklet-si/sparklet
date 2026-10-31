@@ -90,6 +90,42 @@ class CatalogTests(unittest.TestCase):
         return {"originCountry": country, "rank": rank, "reviewedAt": "2026-10-27", "downloads30d": None,
                 "evidence": ["https://example.com/model-card"], "files": [{"path": "model.safetensors", "bytes": 100}]}
 
+    def test_workbench_variants_are_independent_and_v1_only_serves_recommendations(self):
+        base = json.loads(self.model.read_text())
+        base["optimization"] = {"status": "pending", "recommended": True}
+        base["inference"] = {"name": "Standard", "speculativeDecoding": "none", "features": "Fixture", "performance": "Not measured"}
+        self.model.write_text(json.dumps(base))
+        variant = copy.deepcopy(base)
+        variant["id"] = "fixture-dflash"
+        variant["optimization"] = {"status": "optimized", "recommended": False}
+        variant["inference"].update(name="DFlash", speculativeDecoding="dflash", draftModel={"repo": "Example/draft", "revision": "1" * 40})
+        variant_path = self.model.with_name("fixture-dflash.json")
+        variant_path.write_text(json.dumps(variant))
+        self.assertEqual(len(catalog.load(self.root)[1]), 2)
+        files = catalog.build(self.root)
+        index = json.loads(files["index.json"])
+        self.assertEqual(index["modelCount"], 1)
+        for name, data in files.items():
+            if name.startswith("objects/"):
+                document = json.loads(data)
+                self.assertNotIn("optimization", document)
+                self.assertNotIn("inference", document)
+        variant["optimization"]["recommended"] = True
+        variant_path.write_text(json.dumps(variant))
+        self.assertEqual(json.loads(catalog.build(self.root)["index.json"])["modelCount"], 2)
+        for mutation in (
+            lambda m: m["optimization"].update(status="ready"),
+            lambda m: m["optimization"].update(recommended="false"),
+            lambda m: m["inference"].pop("draftModel"),
+            lambda m: m["inference"]["draftModel"].update(revision="main"),
+            lambda m: m["inference"].update(speculativeDecoding="none"),
+        ):
+            invalid = copy.deepcopy(variant)
+            mutation(invalid)
+            variant_path.write_text(json.dumps(invalid))
+            with self.assertRaises(ValueError):
+                catalog.build(self.root)
+
     def test_curation_rejects_invalid_order_evidence_and_file_totals(self):
         self.change(lambda m: m.update(curation=self.curation()))
         original = self.model.read_bytes()

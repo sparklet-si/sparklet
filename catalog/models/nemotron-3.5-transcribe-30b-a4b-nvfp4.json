@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "kind": "model",
+  "id": "nemotron-3.5-transcribe-30b-a4b-nvfp4",
+  "name": "Nemotron 3.5 Transcribe 30B-A4B · NVFP4 · 无 DFlash",
+  "description": "40 种语言离线转写、语音翻译、说话人区分与音频问答，单段录音最长 1 小时；不作为通用聊天模型。NVFP4 仅限 Blackwell，需外部 vLLM 与 NeMo Speech 插件。",
+  "family": "Nemotron 3.5",
+  "architecture": "nemo_speechlm",
+  "format": "safetensors",
+  "quantization": "NVFP4",
+  "source": {
+    "repo": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B-NVFP4",
+    "revision": "66c6adc4020179567074d0399cda2a4eeb2bb347"
+  },
+  "downloads": {
+    "global": [
+      {
+        "label": "Hugging Face · 固定版本",
+        "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B-NVFP4/tree/66c6adc4020179567074d0399cda2a4eeb2bb347",
+        "revision": "66c6adc4020179567074d0399cda2a4eeb2bb347",
+        "verification": "upstream",
+        "manifestUrl": null,
+        "manifestSha256": null
+      }
+    ],
+    "cn": []
+  },
+  "requirements": {
+    "systemRamGiB": null,
+    "gpuMemoryGiB": null,
+    "diskBytes": 21576957938,
+    "notes": "本条固定为无投机解码配置，未启用 MTP 或 DFlash。同系列 DFlash2 仓库是投机解码草稿，不能单独转写，本条不含草稿权重。DFlash2 与模型自带 MTP 二选一；DFlash2 不支持词级时间戳，另建条目记录。官方路线是 vLLM 0.32.0 加 NeMo Speech main 的 nemo_speechlm 插件：需显式设置 --kv-cache-dtype fp8，首次启动由 FlashInfer 编译内核，需要 CUDA 13 的 nvcc。官方参考部署为单卡 96 GB RTX PRO 6000；兼容表列出 DGX Spark (GB10) 的 NVFP4，系统为 Linux 或 WSL2，原生 Windows 只列 GGML 路线。SGLang-Omni 不支持此 NVFP4 检查点。官方称此 NVFP4 的平均错误率较 BF16 相对高约 3.6%。上下文 65,536 token、单段录音最长 1 小时；长录音另需 KV 与音频编码内存，先从单路短音频验证。 以下为单机 128 GiB Linux GB10 的选型建议，未完成本版本的 Sparklet 实机验收。文件体积不是运行内存；需另留系统、加载临时空间、KV cache 和运行环境磁盘空间。 当前 Sparklet 未接入此架构或量化，需使用所述外部引擎。"
+  },
+  "hardware": [
+    {
+      "id": "nvidia-dgx-spark",
+      "name": "NVIDIA DGX Spark / GB10 / Linux / 128 GiB",
+      "status": "unverified",
+      "reportIds": []
+    }
+  ],
+  "curation": {
+    "originCountry": "US",
+    "rank": 50,
+    "reviewedAt": "2026-10-31",
+    "downloads30d": 1940,
+    "evidence": [
+      "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B-NVFP4/blob/66c6adc4020179567074d0399cda2a4eeb2bb347/README.md",
+      "https://github.com/NVIDIA-NeMo/Speech",
+      "https://research.nvidia.com/labs/nemotron/files/NVIDIA-Nemotron-3.5-Transcribe-Technical-Report.pdf"
+    ],
+    "files": [
+      {
+        "path": "LICENSE",
+        "bytes": 2694
+      },
+      {
+        "path": "THIRD_PARTY_NOTICES.md",
+        "bytes": 2305
+      },
+      {
+        "path": "chat_template.jinja",
+        "bytes": 12482
+      },
+      {
+        "path": "config.json",
+        "bytes": 472362
+      },
+      {
+        "path": "generation_config.json",
+        "bytes": 92
+      },
+      {
+        "path": "hf_quant_config.json",
+        "bytes": 31826
+      },
+      {
+        "path": "licenses/Qwen3-ASR-LICENSE.txt",
+        "bytes": 11343
+      },
+      {
+        "path": "licenses/vLLM-LICENSE.txt",
+        "bytes": 11357
+      },
+      {
+        "path": "llm_backbone/config.json",
+        "bytes": 2403
+      },
+      {
+        "path": "model-00001-of-00002.safetensors",
+        "bytes": 9988250728
+      },
+      {
+        "path": "model-00002-of-00002.safetensors",
+        "bytes": 9192549192
+      },
+      {
+        "path": "model-ctc-bf16.safetensors",
+        "bytes": 201897998
+      },
+      {
+        "path": "model-mtp-fp8.safetensors",
+        "bytes": 1335778712
+      },
+      {
+        "path": "model.safetensors.index.json",
+        "bytes": 2587718
+      },
+      {
+        "path": "perception.safetensors",
+        "bytes": 838256800
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 17078144
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 11782
+      }
+    ]
+  },
+  "optimization": {
+    "status": "pending",
+    "recommended": true
+  },
+  "inference": {
+    "name": "常规解码（无 DFlash）",
+    "speculativeDecoding": "none",
+    "features": "未启用 DFlash 或 MTP；保留 CTC 词级时间戳路线。其他语音任务及引擎限制沿用目标模型。",
+    "performance": "尚无此配置的 Sparklet 实测；速度、延迟及长音频吞吐需独立记录，不能套用 DFlash 或 MTP 成绩。"
+  }
+}

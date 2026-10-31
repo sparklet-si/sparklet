@@ -123,6 +123,12 @@ def load(root):
             require(sum(item["bytes"] for item in curation["files"]) == model["requirements"]["diskBytes"],
                     "selected file sizes differ from diskBytes")
         require(all(part not in (".", "..") for part in model["source"]["repo"].split("/")), "invalid repository")
+        inference = model.get("inference")
+        if inference:
+            draft = inference.get("draftModel")
+            require(inference["speculativeDecoding"] != "dflash" or draft, "DFlash requires a pinned draft model")
+            require(inference["speculativeDecoding"] not in ("none", "mtp") or not draft, "decoding mode does not use an external draft model")
+            require(not draft or all(part not in (".", "..") for part in draft["repo"].split("/")), "invalid draft repository")
         revision = model["source"]["revision"]
         require(SHA.fullmatch(revision), "model revision must be a complete commit SHA")
         require(model["downloads"]["global"], "at least one global download source required")
@@ -178,15 +184,19 @@ def build(root):
         digest = hashlib.sha256(data).hexdigest()
         files[f"objects/{digest}.json"] = data
         return {"sha256": digest, "bytes": len(data)}
-    report_refs = {key: blob(value) for key, value in reports.items()}
+    # v1 remains the recommendation feed. Workbench-only candidates stay in
+    # source documents for import/export without becoming recommendations.
+    recommended = {key: value for key, value in models.items() if value.get("optimization", {}).get("recommended", True)}
+    report_refs = {key: blob(value) for key, value in reports.items() if value["modelId"] in recommended}
     summaries = []
     # Sort before pagination, so all clients (including older v1 clients) see
     # the same global order. Legacy entries without curation sort last by ID.
-    for model in sorted(models.values(), key=recommendation_key):
+    for model in sorted(recommended.values(), key=recommendation_key):
         detail = dict(model)
         # Review metadata is authoring-only. Keep served v1 details compatible
         # with already shipped clients whose schemas reject unknown fields.
-        detail.pop("curation", None)
+        for field in ("curation", "optimization", "inference"):
+            detail.pop(field, None)
         detail["reports"] = [{"id": rid, "hardwareId": h["id"], **report_refs[rid]} for h in model["hardware"] for rid in h["reportIds"]]
         summaries.append({key: model[key] for key in ("id", "name", "description", "format", "quantization", "source")} | {"detail": blob(detail)})
     pages, entries = [], []
@@ -199,7 +209,7 @@ def build(root):
         entries.append(summary)
     if entries:
         pages.append({"count": len(entries), **blob(page(entries))})
-    index = config | {"kind": "index", "modelCount": len(models), "pages": pages}
+    index = config | {"kind": "index", "modelCount": len(summaries), "pages": pages}
     require(len(pages) <= 128, "v1 supports at most 128 pages; introduce a new protocol for larger catalogs")
     files["index.json"] = encode(index)
     require(len(files["index.json"]) <= INDEX_LIMIT, "index exceeds 32 KiB; create a new protocol version")

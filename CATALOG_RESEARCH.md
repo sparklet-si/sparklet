@@ -4,7 +4,13 @@
 
 此次新增 24 条，保留并重新定位原有 4 条，共 **28 个固定版本/量化变体**。其中 19 条来自中国模型团队，9 条来自其他团队。排序先满足中国团队优先，再综合用途、质量、活跃度、单流延迟、内存余量和部署成熟度；不是把不同任务的模型放进统一跑分榜。NVIDIA 发布的 Qwen 量化仍归入中国组。
 
-2026-10-28 目录修订：撤回 gpt-oss 20B MXFP4 推荐，目录序号更新为 `2026102801`，当前保留 27 条。下文保留 2026-10-27 的研究快照；该模型的链接指向历史对象，不表示仍在当前推荐列表中。
+2026-10-28 目录修订：撤回 gpt-oss 20B MXFP4 推荐，目录序号更新为 `2026102801`，保留 27 条。下文保留 2026-10-27 的研究快照；该模型的链接指向历史对象，不表示仍在当前推荐列表中。
+
+2026-10-31 目录修订：新增 [Nemotron 3.5 Transcribe 30B-A4B · NVFP4](catalog/models/nemotron-3.5-transcribe-30b-a4b-nvfp4.json)，目录序号 `2026103101`，当前共 28 条。它是 2026-10-28 发布的语音专项模型（SALM：Nemotron 3.5 Lightning 混合 Mamba-Transformer MoE 主干加并行专家音频编码器），覆盖 40 种语言转写、语音翻译、说话人区分和音频问答；固定 revision `66c6adc4020179567074d0399cda2a4eeb2bb347`，仓库更新 2026-10-29，授权元数据 `openmdw-1.1`，选中 17 个文件共 21.58 GB，审核日近 30 天下载 1,940。国际组 rank 50，位于 Nemotron 3.5 Super VL 之后、Gemma 4 之前；与 Qwen3-ASR、FireRedASR2 一样按专项任务入选，不与聊天模型比较。
+
+同日扩展模型优化工作台资料，目录序号增加至 `2026103102`：源目录共 29 个变体，v1 仍有 28 个推荐条目。原 Nemotron Transcribe 条目明确为无 DFlash / 无 MTP 的常规解码；另增 [DFlash2 配置](catalog/models/nemotron-3.5-transcribe-30b-a4b-nvfp4-dflash2.json)，暂不推荐，两个配置均为待优化、尚无 Sparklet 实测。目标权重 revision 相同，草稿固定为 `4172ee5b7bfe55f59e784922878c1bd9bdfeb6ba`；草稿选取 `LICENSE`、`THIRD_PARTY_NOTICES.md`、`config.json`、`licenses/vLLM-LICENSE.txt` 和 `model.safetensors`，共 1,141,314,162 字节，与目标文件合计 22,718,272,100 字节。草稿是额外依赖，不单独用于转写。DFlash2 不提供 CTC 词级时间戳；延迟收益随音频长度与并发而变，官方 NIM 优化不能当作开源环境或 Sparklet 的实测成绩。依据：[固定草稿模型卡](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B-DFlash2/blob/4172ee5b7bfe55f59e784922878c1bd9bdfeb6ba/README.md)及上述固定目标模型卡。
+
+入选与边界：模型卡在 Open ASR 英文 9 集平均 WER 4.71、长音频 10.98、7 语言多语 4.62 均为所列开源模型最佳；这些是 BF16 结果，卡片说明 NVFP4 平均错误率相对高约 3.6%。官方路线需要 vLLM 0.32.0 与 NeMo Speech main 的 `nemo_speechlm` 插件，参考部署为单卡 96 GB RTX PRO 6000；兼容表列出 DGX Spark (GB10) NVFP4，但仅限 Linux / WSL2，原生 Windows 只列 GGML。同系列的 [DFlash2](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B-DFlash2) 约 570M 参数，是只能配合本模型使用的投机解码草稿，与内置 MTP 二选一且不支持词级时间戳，草稿本身不作为独立转写模型；无 DFlash 条目不计入草稿下载，DFlash2 组合条目另计该依赖。BF16 / FP8 变体暂未收录，理由同 Qwen3.8 的单一 NVFP4 主推荐。DGX Spark 状态保持 `unverified`。
 
 ## 判断方法与边界
 
@@ -122,6 +128,7 @@
 26. **Gemma 4 31B · Q4_K_M**：`c1ac76e99d5513b141e8adde7288b85c3f9c32ec`；仓库更新 2026-07-17；授权元数据 `apache-2.0`。[资料 1](https://huggingface.co/unsloth/gemma-4-31B-it-GGUF/blob/c1ac76e99d5513b141e8adde7288b85c3f9c32ec/README.md) · [资料 2](https://huggingface.co/google/gemma-4-31B-it)
 27. **Nemotron 3 Nano 30B-A3B · NVFP4**：`6efb4a2a1c1fa277ce7b3df7a1416255011b1c99`；仓库更新 2026-08-24；授权元数据 `nvidia-nemotron-open-model-license`。[资料 1](https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-NVFP4/blob/6efb4a2a1c1fa277ce7b3df7a1416255011b1c99/README.md) · [资料 2](https://github.com/NVIDIA/dgx-spark-playbooks) · [资料 3](https://github.com/eugr/spark-vllm-docker)
 28. **Mistral Small 4 119B · 官方 NVFP4**：`45331841b631f4e281df8e959ea3cc9beb84298a`；仓库更新 2026-09-07；授权元数据 `apache-2.0`。[资料 1](https://huggingface.co/mistralai/Mistral-Small-4-119B-2603-NVFP4/blob/45331841b631f4e281df8e959ea3cc9beb84298a/README.md) · [资料 2](https://github.com/eugr/spark-vllm-docker)
+29. **Nemotron 3.5 Transcribe 30B-A4B · NVFP4**（2026-10-31 新增）：`66c6adc4020179567074d0399cda2a4eeb2bb347`；仓库更新 2026-10-29；授权元数据 `openmdw-1.1`。[资料 1](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B-NVFP4/blob/66c6adc4020179567074d0399cda2a4eeb2bb347/README.md) · [资料 2](https://github.com/NVIDIA-NeMo/Speech) · [资料 3](https://research.nvidia.com/labs/nemotron/files/NVIDIA-Nemotron-3.5-Transcribe-Technical-Report.pdf)
 
 ## 维护与复查
 

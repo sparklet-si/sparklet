@@ -372,6 +372,86 @@
           }
         }
       }
+    },
+    "optimization": {
+      "description": "Authoring-only workbench classification; independent of publication and hardware verification. Missing legacy values mean pending and recommended.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "recommended"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "optimized"
+          ]
+        },
+        "recommended": {
+          "type": "boolean"
+        }
+      }
+    },
+    "inference": {
+      "description": "Authoring-only inference variant identity. Different decoding configurations require distinct model IDs and reports.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "speculativeDecoding",
+        "features",
+        "performance"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "speculativeDecoding": {
+          "type": "string",
+          "enum": [
+            "none",
+            "mtp",
+            "dflash",
+            "other"
+          ]
+        },
+        "draftModel": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "repo",
+            "revision"
+          ],
+          "properties": {
+            "repo": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200,
+              "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+            },
+            "revision": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 40,
+              "pattern": "^[0-9a-f]{40}$"
+            }
+          }
+        },
+        "features": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 800
+        },
+        "performance": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 800
+        }
+      }
     }
   }
 }

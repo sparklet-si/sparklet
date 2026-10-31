@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "kind": "model",
+  "id": "nemotron-3.5-transcribe-30b-a4b-nvfp4-dflash2",
+  "name": "Nemotron 3.5 Transcribe 30B-A4B · NVFP4 · DFlash2",
+  "description": "Nemotron 语音目标模型加 DFlash2 草稿的独立推理配置；40 种语言转写、翻译、说话人区分和音频问答。此配置不支持词级时间戳；需外部 vLLM 与 NeMo Speech 插件。",
+  "family": "Nemotron 3.5",
+  "architecture": "nemo_speechlm",
+  "format": "safetensors",
+  "quantization": "NVFP4",
+  "source": {
+    "repo": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B-NVFP4",
+    "revision": "66c6adc4020179567074d0399cda2a4eeb2bb347"
+  },
+  "downloads": {
+    "global": [
+      {
+        "label": "Hugging Face · 固定版本",
+        "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B-NVFP4/tree/66c6adc4020179567074d0399cda2a4eeb2bb347",
+        "revision": "66c6adc4020179567074d0399cda2a4eeb2bb347",
+        "verification": "upstream",
+        "manifestUrl": null,
+        "manifestSha256": null
+      }
+    ],
+    "cn": []
+  },
+  "requirements": {
+    "systemRamGiB": null,
+    "gpuMemoryGiB": null,
+    "diskBytes": 22718272100,
+    "notes": "本条是 NVFP4 目标模型与 DFlash2 草稿组成的推理变体。下载大小包含目标模型文件与额外草稿的权重、配置和许可证；全球下载来源指向目标模型，草稿固定来源为 https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B-DFlash2/tree/4172ee5b7bfe55f59e784922878c1bd9bdfeb6ba 。使用 vLLM 0.32.0 与 NeMo Speech 插件，按官方说明修复 DFlash2 请求结束问题并启用 V2 runner，关闭 CTC 时间戳；不能同时启用 MTP。目标权重仅支持 Blackwell。先编译及预热 FlashInfer 内核，再测稳态速度；冷启动、输入长度、并发、投机 token 数和接受率需分别记录。当前配置尚未完成 Sparklet 实机验收，速度和运行内存保留未知；文件大小不是运行内存。"
+  },
+  "hardware": [
+    {
+      "id": "nvidia-dgx-spark",
+      "name": "NVIDIA DGX Spark / GB10 / Linux / 128 GiB",
+      "status": "unverified",
+      "reportIds": []
+    }
+  ],
+  "optimization": {
+    "status": "pending",
+    "recommended": false
+  },
+  "inference": {
+    "name": "DFlash2 投机解码",
+    "speculativeDecoding": "dflash",
+    "draftModel": {
+      "repo": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B-DFlash2",
+      "revision": "4172ee5b7bfe55f59e784922878c1bd9bdfeb6ba"
+    },
+    "features": "目标模型为 NVFP4，草稿为 BF16 DFlash2；与 MTP 不同时启用，需关闭 CTC 时间戳，不支持词级时间戳。草稿模型不能独立转写。",
+    "performance": "尚无此配置的 Sparklet 实测。官方资料说明收益随音频长度、并发和接受率变化；需分别测量短音频延迟与长音频吞吐，不把官方 NIM 成绩当成本地引擎成绩。"
+  }
+}

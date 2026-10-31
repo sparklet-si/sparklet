@@ -2,12 +2,12 @@
 
 目录位于本发布仓库的 `catalog/`，与程序 Releases 独立更新；不包含模型权重或产品源码。
 
-2026-10-27 的单机 128 GiB DGX Spark / Linux 选型与社区资料见 [研究记录](CATALOG_RESEARCH.md)。2026-10-28 撤回 gpt-oss 20B MXFP4 推荐后，当前目录共 27 个固定版本/量化条目。推荐资料涵盖外部引擎候选，是否可在当前 Sparklet 登记由已安装推理组件决定。
+2026-10-27 的单机 128 GiB DGX Spark / Linux 选型与社区资料见 [研究记录](CATALOG_RESEARCH.md)。2026-10-28 撤回 gpt-oss 20B MXFP4 推荐；2026-10-31 新增 Nemotron 3.5 Transcribe 30B-A4B NVFP4 语音模型，并区分无 DFlash 与 DFlash2 配置。当前源目录共 29 个模型变体，其中 28 个保留推荐标记；v1 推荐目录为 28 条。推荐资料涵盖外部引擎候选，是否可在当前 Sparklet 登记由已安装推理组件决定。
 
 ```text
 catalog/
   catalog.json                     # 协议、单调递增序号、更新日期
-  models/<variant-id>.json          # 社区编辑；每个量化变体一个文件
+  models/<variant-id>.json          # 社区编辑；每个量化 / 推理配置变体一个文件
   reports/<variant-id>/<id>.json    # 社区编辑；每组实测环境一个文件
   v1/index.json                    # 客户端入口，最多 32 KiB
   v1/objects/<sha256>.json          # 不可变分页、模型详情或实测报告，最多 64 KiB
@@ -22,6 +22,12 @@ tools/catalog.py                   # 无第三方依赖的校验与确定性生�
 数据模型、下载来源、硬件报告的字段说明见 Schema 和 [贡献指南](CONTRIBUTING.md)。报告中的每个 sample 是该上下文/负载条件下的独立观察：不插值、不按显存自动调参，不把容量、权重大小与实测峰值混为一谈。Windows UMA 的共享区属于系统可见内存，不能重复相加；提交额度单独记录。
 
 ## 推荐顺序与选型记录
+
+源文件的可选 `optimization` 包含 `status`（`pending` 待优化 / `optimized` 已优化）和布尔值 `recommended`。二者独立，同一模型可同时已优化且推荐。旧文件缺省时按待优化、推荐处理；工作台新建条目默认待优化、不推荐。v1 只生成推荐条目；非推荐的优化资料仍保存在源目录，供工作台导入导出。
+
+可选 `inference` 记录配置名称、投机解码方式、固定版本草稿模型、特性与速度说明。配置、草稿 revision 或量化改变时使用新 ID，报告不得跨变体复用。DFlash 必须绑定草稿仓库与完整 revision；草稿不是独立可运行的语音模型。Nemotron 的无 DFlash 条目明确为无投机解码，DFlash2 另建条目且暂不推荐，两者均待优化、暂无 Sparklet 实测；MTP 应另建配置。
+
+`optimization`、`inference` 与 `curation` 一样仅保留在源文件，生成 v1 详情时移除，以兼容现有严格校验的客户端。变体名称、简介和运行需求须写清配置差异与额外草稿下载，不能只依赖新元数据说明。
 
 模型源文件可带 `curation`：`originCountry` 是原模型团队的来源（NVIDIA/Unsloth 等量化发布者不改变 Qwen 的中国来源），`rank` 为组内推荐顺序，数值越小越靠前。生成器先将 `CN` 组排在前面，再按 `rank`、稳定 `id` 排序，最后分页；国际组不再按国家分组。无 `curation` 的旧条目按 ID 放到末尾。排序不代表跨任务统一的性能排名。
 
